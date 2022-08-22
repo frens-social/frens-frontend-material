@@ -4,7 +4,9 @@ import {
   Button,
   Card,
   CardContent,
+  Item,
   TextField,
+  Grid,
 } from "@material-ui/core";
 
 import "./landing.css";
@@ -13,47 +15,64 @@ function Landing() {
   return (
     <div className="landing">
       <div className="main-content">
-        <div className="left-side">
-          <div className="logo">
-            <h1>Logo Goes Here</h1>
-          </div>
-          <div className="about">
-            <h2>About goes here</h2>
-          </div>
-        </div>
+        <Card className="info-card">
+          <CardContent>
+            <Grid container spacing={3}></Grid>
+          </CardContent>
+        </Card>
 
-        <div className="right-side">
-          <Card>
-            <CardContent>
-              <div>
+        <Card className="login-card">
+          <CardContent>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+              className="login-grid"
+            >
+              <Grid item className="username-input-container">
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
-                  variant="outlined"
+                  id="standard-basic"
+                  label="Email"
+                  className="username-input"
                 />
-              </div>
-              <div>
+              </Grid>
+              <Grid item className="password-input-container">
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
-                  variant="outlined"
+                  id="standard-basic"
+                  label="Password"
+                  type="password"
+                  className="password-input"
                 />
-              </div>
-              <div>
-                <Button variant="contained" color="primary">
+              </Grid>
+              <Grid item className="login-button-container">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="login-button"
+                  onClick={() => {
+                    window.location.href = "/home";
+                  }}
+                >
                   Login
                 </Button>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <Button variant="contained" color="primary">
-                Register
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+              </Grid>
+              <Grid item>
+                <Divider variant="middle" />
+              </Grid>
+              <Grid item className="signup-button-container">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="signup-button"
+                >
+                  Create Account
+                </Button>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="footer">
