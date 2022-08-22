@@ -2,22 +2,17 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './components/home';
-import Auth from './components/auth';
-
-import Navigation from './components/navigation/navigation';
+import Landing from './components/landing';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navigation />
+    <div className="App">
+      <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-        </Routes>
-      </div>
-    </Router>
+          <Route path="/" element={<Landing />} />
+          </Routes>
+      </Router>
+    </div>
   );
 }
 
