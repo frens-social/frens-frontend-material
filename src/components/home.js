@@ -11,35 +11,31 @@ import {
 } from "@material-ui/core";
 
 import "./home.css";
-import AccountCard from "./account-card";
-import Navigation from "./navigation";
-import StatusCreator from "./status-creator";
+
+import HomeLeftPanel from "./home-left-panel";
+import HomeMiddlePanel from "./home-middle-panel";
+import HomeRightPannel from "./home-right-panel";
 
 function Home() {
   return (
     <div className="home">
-      <div className="main-content">
-        <Card className="left-panel">
-          <CardContent>
-            <Grid container spacing={3}>
-              <AccountCard />
-              <Navigation />
-            </Grid>
-          </CardContent>
-        </Card>
-        <Card className="middle-panel">
-          <CardContent>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <StatusCreator />
-                <Feed />
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-        <Card className="right-panel">
-          <CardContent></CardContent>
-        </Card>
+      <div className="home-content">
+        <Grid
+          container
+          spacing={3}
+          direction="row"
+          justify="center"
+        >
+          <Grid item xs={2} sm={2}>
+            <HomeLeftPanel />
+          </Grid>
+          <Grid item xs={4} sm={4}>
+            <HomeMiddlePanel />
+          </Grid>
+          <Grid item xs={2} sm={2}>
+            <HomeRightPannel />
+          </Grid>
+        </Grid>
       </div>
     </div>
   );

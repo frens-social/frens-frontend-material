@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Divider, IconButton, Typography } from "@material-ui/core";
+import { Divider, Card, IconButton, Typography } from "@material-ui/core";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
@@ -12,24 +12,26 @@ class Navigation extends React.Component {
   render() {
     return (
       <div className="navigation">
-        <IconButton aria-label="Home">
-          <HomeIcon />
-          <Typography variant="body1">Home</Typography>
-        </IconButton>
+        <Card>
+          <IconButton aria-label="Home">
+            <HomeIcon />
+            <Typography variant="body1">Home</Typography>
+          </IconButton>
 
-        <Divider orientation="vertical" flexItem />
+          <Divider orientation="vertical" flexItem />
 
-        <IconButton aria-label="Messages">
+          <IconButton aria-label="Messages">
             <EmailIcon />
             <Typography variant="body1">Messages</Typography>
-        </IconButton>
+          </IconButton>
 
-        <Divider orientation="vertical" flexItem />
+          <Divider orientation="vertical" flexItem />
 
-        <IconButton aria-label="Notifications">
+          <IconButton aria-label="Notifications">
             <NotificationsIcon />
             <Typography variant="body1">Notifications</Typography>
-        </IconButton>
+          </IconButton>
+        </Card>
       </div>
     );
   }

@@ -3,10 +3,19 @@ import React from "react";
 import {
   Card,
   CardContent,
+  Paper,
   Typography,
+  Box,
+  Grid,
 } from "@material-ui/core";
 
 import "./account-card.css";
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url("https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png")`,
+  },
+};
 
 class AccountCard extends React.Component {
   constructor(props) {
@@ -47,8 +56,8 @@ class AccountCard extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Card className="account-card">
-          <CardContent className="account-card-content">
+        <Box className="account-card-container" style={styles.paperContainer}>
+          <Grid container spacing={3} direction="row">
             <div
               className="account-card-image"
               style={{
@@ -63,8 +72,8 @@ class AccountCard extends React.Component {
             <Typography component="div" variant="h6">
               {account.username}
             </Typography>
-          </CardContent>
-        </Card>
+          </Grid>
+        </Box>
       );
     }
   }
