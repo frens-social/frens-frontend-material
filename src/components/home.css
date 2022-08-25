@@ -9,3 +9,56 @@
 
     background-color: rgb(32, 0, 36);
 }
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.left-panel {
+    width: 250px;
+    margin-right: 5px;
+}
+
+.middle-panel {
+    width: 400px;
+}
+
+.right-panel {
+    width: 250px;
+    margin-left: 5px;
+}
+
+.profile-card {
+    width: 100%;
+}
+
+.profile-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+}
+
+.navigation-card {
+    width: 100%;
+}
+
+.navigation-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
