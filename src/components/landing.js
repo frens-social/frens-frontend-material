@@ -17,7 +17,14 @@ function Landing() {
       <div className="main-content">
         <Card className="info-card">
           <CardContent>
-            <Grid container spacing={3}></Grid>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <h1>LOGO</h1>
+              </Grid>
+              <Grid item xs={12}>
+                About the site
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
 
@@ -51,9 +58,7 @@ function Landing() {
                   variant="contained"
                   color="primary"
                   className="login-button"
-                  onClick={() => {
-                    window.location.href = "/home";
-                  }}
+                  onClick={() => {handleLogin()}}          
                 >
                   Login
                 </Button>
@@ -86,5 +91,28 @@ function Landing() {
     </div>
   );
 }
+
+const handleLogin = () => {
+  fetch("http://localhost:4000/api/v1/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: "test",
+      password: "test",
+    }),
+  })
+
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    }
+    );
+}
+
+
 
 export default Landing;
