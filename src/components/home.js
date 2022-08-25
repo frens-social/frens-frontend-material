@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 
 import "./home.css";
+import AccountCard from "./account-card";
+import Navigation from "./navigation";
+import StatusCreator from "./status-creator";
 
 function Home() {
   return (
@@ -39,68 +42,6 @@ function Home() {
         </Card>
       </div>
     </div>
-  );
-}
-
-class AccountCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      account: {},
-    };
-  }
-
-  componentDidMount() {
-    fetch("http://localhost:4000/api/v1/accounts/self", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          isLoaded: true,
-          account: data,
-        });
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-  }
-
-  render() {
-    const { error, isLoaded, account } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return <div>{account.username}</div>;
-    }
-  }
-}
-
-function Navigation() {
-  return (
-    <Card className="navigation-card">
-      <CardContent className="navigation-card-content">NAVIGATION</CardContent>
-    </Card>
-  );
-}
-
-function StatusCreator() {
-  return (
-    <Card className="status-creator-card">
-      <CardContent className="status-creator-card-content">
-        STATUS CREATOR
-      </CardContent>
-    </Card>
   );
 }
 
