@@ -19,7 +19,7 @@ function Home() {
         <Card className="left-panel">
           <CardContent>
             <Grid container spacing={3}>
-              <ProfileCard />
+              <AccountCard />
               <Navigation />
             </Grid>
           </CardContent>
@@ -27,11 +27,11 @@ function Home() {
         <Card className="middle-panel">
           <CardContent>
             <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <StatusCreator />
-                    <Feed />
-                    </Grid>
-                    </Grid>
+              <Grid item xs={12}>
+                <StatusCreator />
+                <Feed />
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
         <Card className="right-panel">
@@ -42,12 +42,48 @@ function Home() {
   );
 }
 
-function ProfileCard() {
-  return (
-    <Card className="profile-card">
-      <CardContent className="profile-card-content">PROFILE</CardContent>
-    </Card>
-  );
+class AccountCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      account: {},
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:4000/api/v1/accounts/self", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          isLoaded: true,
+          account: data,
+        });
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  }
+
+  render() {
+    const { error, isLoaded, account } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return <div>{account.username}</div>;
+    }
+  }
 }
 
 function Navigation() {
@@ -69,11 +105,11 @@ function StatusCreator() {
 }
 
 function Feed() {
-    return (
-        <Card className="feed-card">
-        <CardContent className="feed-card-content">FEED</CardContent>
-        </Card>
-    );
+  return (
+    <Card className="feed-card">
+      <CardContent className="feed-card-content">FEED</CardContent>
+    </Card>
+  );
 }
 
 export default Home;
