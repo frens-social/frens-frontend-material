@@ -32,9 +32,6 @@ function Landing() {
           <CardContent>
             <Grid
               container
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
               spacing={2}
               className="login-grid"
             >
@@ -62,9 +59,6 @@ function Landing() {
                 >
                   Login
                 </Button>
-              </Grid>
-              <Grid item>
-                <Divider variant="middle" />
               </Grid>
               <Grid item className="signup-button-container">
                 <Button
@@ -106,7 +100,8 @@ const handleLogin = () => {
 
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      localStorage.setItem("token", data.token);
+      window.location.href = "/home";
     }, (error) => {
       console.log(error);
     }
