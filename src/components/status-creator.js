@@ -11,6 +11,36 @@ import ImageIcon from "@mui/icons-material/Image";
 import SendIcon from "@mui/icons-material/Send";
 
 class StatusCreator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "",
+      image: null,
+    };
+  }
+
+  handleSend() {
+    fetch("http://localhost:4000/api/v1/statuses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        text: this.state.text,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.props.onSend(data);
+        this.setState({
+          text: "",
+          image: null,
+        });
+      });
+  }
+
+
   render() {
     return (
       <Card>
@@ -21,6 +51,7 @@ class StatusCreator extends React.Component {
           fullWidth={true}
           placeholder="What's on your mind?"
           className="status-creator-input"
+          onChange={(e) => this.setState({ text: e.target.value })}
         />
         <Card>
           <Box
@@ -35,7 +66,7 @@ class StatusCreator extends React.Component {
               </IconButton>
             </div>
             <div className="right-icons">
-              <IconButton aria-label="Send" onClick={handleSend}>
+              <IconButton aria-label="Send" onClick={() => this.handleSend()}>
                 <SendIcon />
               </IconButton>
             </div>
@@ -44,19 +75,6 @@ class StatusCreator extends React.Component {
       </Card>
     );
   }
-}
-
-function handleSend() {
-  fetch("http://localhost:4000/api/v1/statuses", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-    body: JSON.stringify({
-      status: document.querySelector(".status-creator-input").value,
-    }),
-  });
 }
 
 export default StatusCreator;

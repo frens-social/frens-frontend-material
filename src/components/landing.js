@@ -5,107 +5,122 @@ import {
   CardContent,
   TextField,
   Grid,
+  Box,
+  Typography,
 } from "@material-ui/core";
 
 import "./landing.css";
 
-function Landing() {
-  return (
-    <div className="landing">
-      <div className="main-content">
-        <Card className="info-card">
-          <CardContent>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <h1>LOGO</h1>
-              </Grid>
-              <Grid item xs={12}>
-                About the site
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
+class Landing extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usernameInputValue: "",
+      passwordInputValue: "",
+    };
+  }
 
-        <Card className="login-card">
-          <CardContent>
-            <Grid
-              container
-              spacing={2}
-              className="login-grid"
-            >
-              <Grid item className="username-input-container">
-                <TextField
-                  id="standard-basic"
-                  label="Email"
-                  className="username-input"
-                />
-              </Grid>
-              <Grid item className="password-input-container">
-                <TextField
-                  id="standard-basic"
-                  label="Password"
-                  type="password"
-                  className="password-input"
-                />
-              </Grid>
-              <Grid item className="login-button-container">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className="login-button"
-                  onClick={() => {handleLogin()}}          
-                >
-                  Login
-                </Button>
-              </Grid>
-              <Grid item className="signup-button-container">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className="signup-button"
-                >
-                  Create Account
-                </Button>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </div>
+  render() {
+    return (
+      <div className="landing">
+        <div className="main-content">
+          <Card className="info-card">
+            <Box display="flex" flexDirection="column" sx={{ m: 2, gap: 0 }}>
+              <Typography variant="h3" component="h1" gutterBottom>
+                {" "}
+                Frens.moe{" "}
+              </Typography>
+              <Typography variant="body1" component="p" gutterBottom>
+                {" "}
+                A social network for frens.{" "}
+              </Typography>
+            </Box>
+          </Card>
 
-      <div className="footer">
-        <div className="footer-content">
-          <div>About</div>
-          <div>Contact</div>
-          <div>Terms</div>
-          <div>Privacy</div>
+          <Card className="login-card">
+            <CardContent>
+              <Grid container spacing={2} className="login-grid">
+                <Grid item className="username-input-container">
+                  <TextField
+                    id="standard-basic"
+                    label="Username"
+                    className="username-input"
+                    onChange={(e) => {
+                      this.setState({ usernameInputValue: e.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item className="password-input-container">
+                  <TextField
+                    id="standard-basic"
+                    label="Password"
+                    type="password"
+                    className="password-input"
+                    onChange={(e) => {
+                      this.setState({ passwordInputValue: e.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item className="login-button-container">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className="login-button"
+                    onClick={() => {
+                      handleLogin(this.state.usernameInputValue, this.state.passwordInputValue);
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Grid>
+                <Grid item className="signup-button-container">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className="signup-button"
+                  >
+                    Create Account
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="footer">
+          <div className="footer-content">
+            <div>About</div>
+            <div>Contact</div>
+            <div>Terms</div>
+            <div>Privacy</div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-const handleLogin = () => {
+function handleLogin(username, password) {
   fetch("http://localhost:4000/api/v1/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: "test",
-      password: "test",
+      username: username,
+      password: password,
     }),
   })
-
     .then((res) => res.json())
-    .then((data) => {
-      localStorage.setItem("token", data.token);
-      window.location.href = "/home";
-    }, (error) => {
-      console.log(error);
-    }
+    .then(
+      (data) => {
+        localStorage.setItem("token", data.token);
+        window.location.href = "/home";
+      },
+      (error) => {
+        console.log(error);
+      }
     );
-}
-
-
+};
 
 export default Landing;
