@@ -1,23 +1,44 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import { Typography, Box, Avatar } from "@material-ui/core";
+import { IconButton, opover, Typography, Box, Avatar } from "@material-ui/core";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-function Status(props) {
-  return (
-    <Card style={{ marginBottom: "10px" }}>
-      <div style={{ backgroundImage: `url(${props.account.banner_url})` }}>
-        <Box display="flex" alignItems="center" sx={{ m: 0, gap: 8 }}>
-          <Avatar alt="desu" src={props.account.avatar_url} />
-          <Typography variant="h7">{props.account.username}</Typography>
-        </Box>
-      </div>
+class Status extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "",
+      image: null,
+      optionsMenuOpen: false,
+    };
+  }
 
-      <div className="status" style={{ padding: "15px" }}>
-        <Typography variant="body1">{props.status.text}</Typography>
-      </div>
-    </Card>
-  );
+  displayOptionsMenu() {
+    console.log("displayOptionsMenu");
+  }
+
+  render() {
+    return (
+      <Card style={{ marginBottom: "10px" }}>
+        <div
+          style={{ backgroundImage: `url(${this.props.account.banner_url})` }}
+        >
+          <Box display="flex" alignItems="center" flexWrap="wrap" sx={{ m: 0, p: 1, gap: 12 }}>
+            <Avatar alt="desu" src={this.props.account.avatar_url} />
+            <Typography variant="h6">{this.props.account.username}</Typography>
+            <IconButton onClick={this.displayOptionsMenu} sx={{ marginLeft: "auto" }}>
+              <MoreHorizIcon />
+            </IconButton>
+          </Box>
+        </div>
+
+        <div className="status-text" style={{ padding: "15px" }}>
+          <Typography variant="body1" style={{ wordWrap: "break-word" }}>{this.props.status.text}</Typography>
+        </div>
+      </Card>
+    );
+  }
 }
 
 export default Status;

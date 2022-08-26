@@ -53,7 +53,7 @@ class AccountCard extends React.Component {
         }}>
         <Box display="flex" alignItems="center" sx={{ m: 1, gap: 8 }}>
           <Avatar alt="desu" src={account.avatar_url} />
-          <Typography variant="h7">{account.username}</Typography>
+          <Typography variant="h6">{account.username}</Typography>
         </Box>
         </Card>
       );
