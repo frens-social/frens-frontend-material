@@ -46,7 +46,7 @@ class Feed extends React.Component {
           <Box
             display="flex"
             flexDirection="column"
-            sx={{ m: 0, gap: 8 }}
+            sx={{ m: 0, gap: 0 }}
           >
             {statuses.map((status) => (
               <Status

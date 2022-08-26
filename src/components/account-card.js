@@ -51,18 +51,10 @@ class AccountCard extends React.Component {
         <Card style={{
           backgroundImage: `url("https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png")`,
         }}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyItems: "center",
-              m: 1,
-              gap: 8,
-            }}
-          >
-            <Avatar alt="desu" src={account.avatar_url} />
-            <Typography variant="h7">{account.username}</Typography>
-          </Box>
+        <Box display="flex" alignItems="center" sx={{ m: 1, gap: 8 }}>
+          <Avatar alt="desu" src={account.avatar_url} />
+          <Typography variant="h7">{account.username}</Typography>
+        </Box>
         </Card>
       );
     }
