@@ -1,10 +1,12 @@
-import { Card } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 import React from "react";
 
 function TrendsInfo() {
     return (
         <div>
-            <Card>desu</Card>
+            <Card>
+            <Typography variant="h6">Trends for you</Typography>
+            </Card>
         </div>
     )
 }

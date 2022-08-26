@@ -1,25 +1,21 @@
 import React from "react";
 
-import Grid from "@material-ui/core/Grid";
+import { Box } from "@material-ui/core";
 
 import StatusCreator from "./status-creator";
 import Feed from "./feed";
-import FeedSelecter from "./feed-selecter";
 
 function HomeMiddlePanel() {
   return (
     <div>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <StatusCreator />
-        </Grid>
-        <Grid item xs={12}>
-          <FeedSelecter />
-        </Grid>
-        <Grid item xs={12}>
-          <Feed />
-        </Grid>
-      </Grid>
+      <Box
+        display="flex"
+        flexDirection="column"
+        sx={{ width: 600, m: 0, gap: 8 }}
+      >
+        <StatusCreator />
+        <Feed />
+      </Box>
     </div>
   );
 }

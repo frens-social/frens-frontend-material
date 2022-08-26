@@ -10,12 +10,10 @@ import {
 import ImageIcon from "@mui/icons-material/Image";
 import SendIcon from "@mui/icons-material/Send";
 
-import "./status-creator.css";
-
 class StatusCreator extends React.Component {
   render() {
     return (
-      <Card className="status-creator-card">
+      <Card>
         <FilledInput
           disableUnderline={true}
           inputProps={{ min: 0, style: { textAlign: "left" } }}
