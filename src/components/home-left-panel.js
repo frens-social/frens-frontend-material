@@ -6,9 +6,19 @@ import Navigation from "./navigation";
 function HomeLeftPanel() {
   return (
     <div>
-      <Grid container spacing={3} direction="column" width="100%" justify="center">
-        <AccountCard />
-        <Navigation />
+      <Grid
+        container
+        spacing={3}
+        direction="row"
+        width="100%"
+        justify="center"
+      >
+        <Grid item xs={12}>
+          <AccountCard />
+        </Grid>
+        <Grid item xs={12}>
+          <Navigation />
+        </Grid>
       </Grid>
     </div>
   );

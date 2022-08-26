@@ -26,13 +26,13 @@ function Home() {
           direction="row"
           justify="center"
         >
-          <Grid item xs={2} sm={2}>
+          <Grid item xs={2}>
             <HomeLeftPanel />
           </Grid>
-          <Grid item xs={4} sm={4}>
+          <Grid item xs={4}>
             <HomeMiddlePanel />
           </Grid>
-          <Grid item xs={2} sm={2}>
+          <Grid item xs={2}>
             <HomeRightPannel />
           </Grid>
         </Grid>
