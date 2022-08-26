@@ -1,12 +1,6 @@
 import React from "react";
 
 import {
-  Divider,
-  Button,
-  Card,
-  CardContent,
-  Item,
-  TextField,
   Grid,
 } from "@material-ui/core";
 
@@ -38,14 +32,6 @@ function Home() {
         </Grid>
       </div>
     </div>
-  );
-}
-
-function Feed() {
-  return (
-    <Card className="feed-card">
-      <CardContent className="feed-card-content">FEED</CardContent>
-    </Card>
   );
 }
 

@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import React from "react";
 
 import Status from "./status";
@@ -46,11 +46,11 @@ class Feed extends React.Component {
         } else {
             return (
                 <div>
-                    <Grid>
+                    <Box sx={{ m: 0, gap: 8 }}>
                     {statuses.map((status) => (
                         <Status key={status.id} status={status} account={status.account} />
                     ))}
-                    </Grid>
+                    </Box>
                 </div>
             );
         }

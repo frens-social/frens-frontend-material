@@ -2,20 +2,12 @@ import React from "react";
 
 import {
   Card,
-  CardContent,
-  Paper,
   Typography,
   Box,
-  Grid,
+  Avatar,
 } from "@material-ui/core";
 
 import "./account-card.css";
-
-const styles = {
-  paperContainer: {
-    backgroundImage: `url("https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png")`,
-  },
-};
 
 class AccountCard extends React.Component {
   constructor(props) {
@@ -56,24 +48,22 @@ class AccountCard extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Box className="account-card-container" style={styles.paperContainer}>
-          <Grid container spacing={3} direction="row">
-            <div
-              className="account-card-image"
-              style={{
-                display: "flex",
-                backgroundImage: `url(${account.avatar_url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                width: "50px",
-                height: "50px",
-              }}
-            ></div>
-            <Typography component="div" variant="h6">
-              {account.username}
-            </Typography>
-          </Grid>
-        </Box>
+        <Card style={{
+          backgroundImage: `url("https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png")`,
+        }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyItems: "center",
+              m: 1,
+              gap: 8,
+            }}
+          >
+            <Avatar alt="desu" src={account.avatar_url} />
+            <Typography variant="h7">{account.username}</Typography>
+          </Box>
+        </Card>
       );
     }
   }

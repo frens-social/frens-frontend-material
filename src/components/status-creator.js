@@ -2,11 +2,9 @@ import React from "react";
 
 import {
   Card,
-  CardContent,
   FilledInput,
   IconButton,
   Box,
-  TextField,
 } from "@material-ui/core";
 
 import ImageIcon from "@mui/icons-material/Image";

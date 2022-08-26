@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Divider, Card, IconButton, Typography, Grid } from "@material-ui/core";
+import { Card, IconButton, Typography, Grid } from "@material-ui/core";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";

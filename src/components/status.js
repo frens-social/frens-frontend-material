@@ -12,7 +12,7 @@ function Status(props) {
       </Box>
 
       <div className="status" style={{ padding: "15px" }}>
-        {props.status.text}
+        <Typography variant="body1">{props.status.text}</Typography>
       </div>
     </Card>
   );
