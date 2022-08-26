@@ -1,17 +1,21 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import { Avatar } from "@material-ui/core";
+import { Typography, Box, Avatar } from "@material-ui/core";
 
 function Status(props) {
-    return (
-        <Card>
-            <Avatar src={props.status.account.avatar_url} />
-            <div className="status" style={{ padding: "15px" }}>
-                {props.status.text}
-            </div>
-        </Card>
-    );
+  return (
+    <Card>
+      <Box display="flex" alignItems="center" sx={{ m: 1, gap: 8 }}>
+        <Avatar alt="desu" src={props.account.avatar_url} />
+        <Typography variant="h7">{props.account.username}</Typography>
+      </Box>
+
+      <div className="status" style={{ padding: "15px" }}>
+        {props.status.text}
+      </div>
+    </Card>
+  );
 }
 
 export default Status;
