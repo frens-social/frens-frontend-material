@@ -3,6 +3,7 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import {
   IconButton,
+  Popover,
   Divider,
   Typography,
   Box,
@@ -32,21 +33,34 @@ class Status extends React.Component {
     };
   }
 
-  displayOptionsMenu() {
-    console.log("displayOptionsMenu");
-  }
+  displayOptionsMenu = (event) => {
+    this.setState({
+      optionsMenuOpen: true,
+      optionsMenuAnchorEl: event.currentTarget,
+    });
+  };
 
-  likeStatus() {
-    fetch("localhost:3000/api/statuses/" + this.props.status.id + "/like", {
+  hideOptionsMenu = () => {
+    this.setState({
+      optionsMenuOpen: false,
+    });
+  };
+
+  likeStatus = () => {
+    fetch("http://localhost:4000/api/statuses/" + this.props.status.id + "/like", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+      // Should set error behavior here
     this.setState({
       liked: true,
+      popoverOpen: false,
     });
-  }
+  };
 
   render() {
     return (
@@ -54,7 +68,11 @@ class Status extends React.Component {
         <div
           style={{ backgroundImage: `url(${this.props.account.banner_url})` }}
         >
-          <Box display="flex" alignItems="center" justifyContent={ "space-between" }>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent={"space-between"}
+          >
             <Box
               display="flex"
               alignItems="center"
@@ -68,11 +86,23 @@ class Status extends React.Component {
             </Box>
             <Box>
               <IconButton
-                flex-grow={2}
                 onClick={this.displayOptionsMenu}
                 sx={{ marginLeft: "auto" }}
               >
                 <MoreHorizIcon />
+                <Popover
+                  open={this.state.optionsMenuOpen}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                >
+                  Popover content
+                </Popover>
               </IconButton>
             </Box>
           </Box>
@@ -116,22 +146,6 @@ class Status extends React.Component {
       </Card>
     );
   }
-}
-
-function header() {
-  return (
-    <div className="status-header">
-      <div className="status-header-left">
-        <Avatar alt="desu" src={this.props.account.avatar_url} />
-        <Typography variant="h6">{this.props.account.username}</Typography>
-      </div>
-      <div className="status-header-right">
-        <IconButton>
-          <MoreHorizIcon />
-        </IconButton>
-      </div>
-    </div>
-  );
 }
 
 export default Status;
