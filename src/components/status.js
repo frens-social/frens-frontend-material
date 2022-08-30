@@ -11,16 +11,9 @@ import {
 } from "@material-ui/core";
 
 import StatusOptionsMenu from "./statusOptionsMenu";
+import StatusReactionButton from "./statusReactionButton";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import AddReactionIcon from "@mui/icons-material/AddReaction";
-import ReplyIcon from "@mui/icons-material/Reply";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 class Status extends React.Component {
   constructor(props) {
@@ -29,43 +22,9 @@ class Status extends React.Component {
       text: "",
       image: null,
 
-      optionsMenuOpen: false,
-
       liked: false,
     };
   }
-
-  displayOptionsMenu = (event) => {
-    this.setState({
-      optionsMenuOpen: true,
-      optionsMenuAnchorEl: event.currentTarget,
-    });
-  };
-
-  hideOptionsMenu = () => {
-    this.setState({
-      optionsMenuOpen: false,
-    });
-  };
-
-  likeStatus = () => {
-    fetch(
-      "http://localhost:4000/api/statuses/" + this.props.status.id + "/like",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .catch((err) => console.log(err));
-    // Should set error behavior here
-    this.setState({
-      liked: true,
-      popoverOpen: false,
-    });
-  };
 
   render() {
     return (
@@ -90,26 +49,7 @@ class Status extends React.Component {
               </Typography>
             </Box>
             <Box>
-              <IconButton
-                onClick={this.displayOptionsMenu}
-                sx={{ marginLeft: "auto" }}
-              >
-                <MoreHorizIcon />
-                <Popover
-                  open={this.state.optionsMenuOpen}
-                  anchorEl={this.state.optionsMenuAnchorEl}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                >
-                  <StatusOptionsMenu status={this.props.status} />
-                </Popover>
-              </IconButton>
+              <StatusOptionsMenu status={this.props.status} />
             </Box>
           </Box>
         </div>
@@ -128,25 +68,7 @@ class Status extends React.Component {
             alignItems="center"
             justifyContent="space-between"
           >
-            <IconButton onClick={this.likeStatus}>
-              <FavoriteBorderIcon />
-            </IconButton>
-
-            <IconButton>
-              <BookmarkBorderIcon />
-            </IconButton>
-
-            <IconButton>
-              <AddReactionIcon />
-            </IconButton>
-
-            <IconButton>
-              <FormatQuoteIcon />
-            </IconButton>
-
-            <IconButton>
-              <ReplyIcon />
-            </IconButton>
+            <StatusReactionButton />
           </Box>
         </div>
       </Card>

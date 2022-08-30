@@ -5,14 +5,25 @@ import { Box, Icon } from "@material-ui/core";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton, Popover, Divider, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 class StatusOptionsMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        id: null,
+      id: null,
+      open: false,
+      anchorEl: null,
     };
   }
+
+  toggleOpen = (event) => {
+    this.setState({
+      open: !this.state.open,
+      anchorEl: event.currentTarget,
+    });
+  }
+
 
   onDelete = () => {
     fetch("http://localhost:4000/api/v1/statuses/" + this.props.status.id, {
@@ -28,16 +39,32 @@ class StatusOptionsMenu extends React.Component {
 
   render() {
     return (
-      <Card>
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Box display="flex" flexDirection="row" alignItems="center">
-            <Button onClick={this.onDelete}>
-              <DeleteIcon />
-              <Typography variant="body1">Delete</Typography>
-            </Button>
-          </Box>
-        </Box>
-      </Card>
+      <IconButton onClick={this.toggleOpen} sx={{ marginLeft: "auto" }}>
+        <MoreHorizIcon />
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+        >
+          <Card>
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Box display="flex" flexDirection="row" alignItems="center">
+                <Button onClick={this.onDelete}>
+                  <DeleteIcon />
+                  <Typography variant="body1">Delete</Typography>
+                </Button>
+              </Box>
+            </Box>
+          </Card>
+        </Popover>
+      </IconButton>
     );
   }
 }
