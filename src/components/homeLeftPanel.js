@@ -1,4 +1,4 @@
-import { Box, Grid } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import React from "react";
 import AccountCard from "./accountCard";
 import Navigation from "./navigation";

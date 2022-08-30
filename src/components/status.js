@@ -2,18 +2,13 @@ import React from "react";
 
 import Card from "@material-ui/core/Card";
 import {
-  IconButton,
-  Popover,
   Divider,
   Typography,
   Box,
-  Avatar,
 } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
 import StatusReactionButton from "./statusReactionButton";
-
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 class Status extends React.Component {
   constructor(props) {

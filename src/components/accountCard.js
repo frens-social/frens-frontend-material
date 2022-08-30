@@ -48,7 +48,6 @@ class AccountCard extends React.Component {
         >
           <div
             style={{
-              background: "rgba(255, 255, 255, 0.5)",
               background:
                 "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
               padding: "10px",

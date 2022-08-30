@@ -1,9 +1,9 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import { Box, Icon } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton, Popover, Divider, Typography } from "@material-ui/core";
+import { IconButton, Popover, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Avatar, Typography, Card, Box } from "@material-ui/core";
+import { Avatar, Typography, Box } from "@material-ui/core";
 
 import StatusOptionsMenu from "./statusOptionsMenu";
 
@@ -15,7 +15,6 @@ class StatusHeader extends React.Component {
       <div style={{ backgroundImage: `url(${this.props.account.banner_url})` }}>
         <div
           style={{
-            background: "rgba(255, 255, 255, 0.5)",
             background:
               "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
             padding: "10px",
