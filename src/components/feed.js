@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
+import FeedSelecter from "./feedSelecter";
 
 import Status from "./status";
 
@@ -13,8 +14,14 @@ class Feed extends React.Component {
     };
   }
 
+  onNewFeedSelect = (event) => {
+    this.setState({
+      selectedFeed: event.target.value,
+    });
+  };
+
   componentDidMount() {
-    fetch("http://localhost:4000/api/v1/statuses", {
+    fetch("http://localhost:4000/api/v1/feeds/public", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -42,12 +49,13 @@ class Feed extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
-          <Box
-            display="flex"
-            flexDirection="column"
-            sx={{ m: 0, gap: 0 }}
-          >
+        <Box
+          display="flex"
+          flexDirection="column"
+          sx={{ width: 600, m: 0, gap: 8 }}
+        >
+          <FeedSelecter onNewFeedSelect={this.onNewFeedSelect} />
+          <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
             {statuses.map((status) => (
               <Status
                 key={status.id}
@@ -56,7 +64,7 @@ class Feed extends React.Component {
               />
             ))}
           </Box>
-        </div>
+        </Box>
       );
     }
   }

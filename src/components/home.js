@@ -1,11 +1,11 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import { Box } from "@material-ui/core";
 
-import "./home.css";
-
 import HomeLeftPanel from "./homeLeftPanel";
-import HomeMiddlePanel from "./homeMiddlePanel";
+import Feed from "./feed";
+import Profile from "./profile";
 import HomeRightPannel from "./homeRightPanel";
 
 function Home() {
@@ -20,7 +20,10 @@ function Home() {
         sx={{ m: 1, gap: 12 }}
       >
         <HomeLeftPanel />
-        <HomeMiddlePanel />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/profile/*" element={<Profile />} />
+        </Routes>
         <HomeRightPannel />
       </Box>
     </div>

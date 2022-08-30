@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import "./landing.css";
+import "./auth.css";
 
-class Landing extends React.Component {
+class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,4 +115,4 @@ function handleLogin(username, password) {
     );
 }
 
-export default Landing;
+export default Auth;

@@ -8,7 +8,6 @@ class StatusHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: null,
         };
     }
 
@@ -30,7 +29,7 @@ class StatusHeader extends React.Component {
             <Typography variant="h6">{this.props.account.username}</Typography>
           </Box>
           <Box>
-            <StatusOptionsMenu status={this.props.status} />
+            <StatusOptionsMenu status={this.props.status} account={this.props.account} />
           </Box>
         </Box>
       </div>

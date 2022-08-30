@@ -11,7 +11,6 @@ class StatusOptionsMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
       open: false,
       anchorEl: null,
     };

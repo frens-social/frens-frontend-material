@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Landing from './components/landing';
+import Auth from './components/auth';
 import Home from './components/home';
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
           </Routes>
       </Router>
     </div>

@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
-import StatusOptionsMenu from "./statusOptionsMenu";
 import StatusReactionButton from "./statusReactionButton";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -22,15 +21,13 @@ class Status extends React.Component {
     this.state = {
       text: "",
       image: null,
-
-      liked: false,
     };
   }
 
   render() {
     return (
       <Card style={{ marginBottom: "10px" }}>
-        <StatusHeader id={this.props.status.id} account={this.props.account} />
+        <StatusHeader status={this.props.status} account={this.props.account} />
 
         <div className="status-text" style={{ padding: "15px" }}>
           <Typography variant="body1" style={{ wordWrap: "break-word" }}>
