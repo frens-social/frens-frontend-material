@@ -10,6 +10,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 
+import StatusHeader from "./statusHeader";
 import StatusOptionsMenu from "./statusOptionsMenu";
 import StatusReactionButton from "./statusReactionButton";
 
@@ -29,30 +30,7 @@ class Status extends React.Component {
   render() {
     return (
       <Card style={{ marginBottom: "10px" }}>
-        <div
-          style={{ backgroundImage: `url(${this.props.account.banner_url})` }}
-        >
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent={"space-between"}
-          >
-            <Box
-              display="flex"
-              alignItems="center"
-              flexWrap="wrap"
-              sx={{ m: 0, p: 1, gap: 12 }}
-            >
-              <Avatar alt="desu" src={this.props.account.avatar_url} />
-              <Typography variant="h6">
-                {this.props.account.username}
-              </Typography>
-            </Box>
-            <Box>
-              <StatusOptionsMenu status={this.props.status} />
-            </Box>
-          </Box>
-        </div>
+        <StatusHeader id={this.props.status.id} account={this.props.account} />
 
         <div className="status-text" style={{ padding: "15px" }}>
           <Typography variant="body1" style={{ wordWrap: "break-word" }}>
