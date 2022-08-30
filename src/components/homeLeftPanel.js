@@ -1,6 +1,6 @@
 import { Box, Grid } from "@material-ui/core";
 import React from "react";
-import AccountCard from "./account-card";
+import AccountCard from "./accountCard";
 import Navigation from "./navigation";
 
 function HomeLeftPanel() {
