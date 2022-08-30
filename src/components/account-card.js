@@ -1,14 +1,37 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import {
-  Card,
-  Typography,
-  Box,
   Avatar,
+  Box,
+  Card,
+  CardActionArea,
+  Typography,
 } from "@material-ui/core";
 
 import "./account-card.css";
 
+function AccountCard() {
+  let navigate = useNavigate();
+
+  return (
+    <Card className="account-card">
+      <CardActionArea onClick={() => navigate("/profile")}>
+      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+        <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" />
+        <Typography variant="h5" component="h2">
+          John Doe
+        </Typography>
+      </Box>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export default AccountCard;
+
+/*
 class AccountCard extends React.Component {
   constructor(props) {
     super(props);
@@ -62,3 +85,4 @@ class AccountCard extends React.Component {
 }
 
 export default AccountCard;
+*/
