@@ -10,6 +10,9 @@ import {
   Avatar,
 } from "@material-ui/core";
 
+
+import StatusOptionsMenu from "./statusOptionsMenu";
+
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -18,6 +21,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddReactionIcon from "@mui/icons-material/AddReaction";
 import ReplyIcon from "@mui/icons-material/Reply";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 class Status extends React.Component {
   constructor(props) {
@@ -47,15 +51,18 @@ class Status extends React.Component {
   };
 
   likeStatus = () => {
-    fetch("http://localhost:4000/api/statuses/" + this.props.status.id + "/like", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      "http://localhost:4000/api/statuses/" + this.props.status.id + "/like",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .catch((err) => console.log(err));
-      // Should set error behavior here
+    // Should set error behavior here
     this.setState({
       liked: true,
       popoverOpen: false,
@@ -92,16 +99,17 @@ class Status extends React.Component {
                 <MoreHorizIcon />
                 <Popover
                   open={this.state.optionsMenuOpen}
+                  anchorEl={this.state.optionsMenuAnchorEl}
                   anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
+                    vertical: "bottom",
+                    horizontal: "center",
                   }}
                   transformOrigin={{
                     vertical: "top",
                     horizontal: "left",
                   }}
                 >
-                  Popover content
+                  <StatusOptionsMenu id={this.props.id} />
                 </Popover>
               </IconButton>
             </Box>
