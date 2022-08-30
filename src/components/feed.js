@@ -1,6 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
-import FeedSelecter from "./feedSelecter";
+import StatusCreator from "./statusCreator";
 
 import Status from "./status";
 
@@ -54,7 +54,7 @@ class Feed extends React.Component {
           flexDirection="column"
           sx={{ width: 600, m: 0, gap: 8 }}
         >
-          <FeedSelecter onNewFeedSelect={this.onNewFeedSelect} />
+          <StatusCreator />
           <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
             {statuses.map((status) => (
               <Status
