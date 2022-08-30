@@ -10,7 +10,6 @@ import {
   Avatar,
 } from "@material-ui/core";
 
-
 import StatusOptionsMenu from "./statusOptionsMenu";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -21,13 +20,12 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddReactionIcon from "@mui/icons-material/AddReaction";
 import ReplyIcon from "@mui/icons-material/Reply";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 class Status extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
       text: "",
       image: null,
 
@@ -109,7 +107,7 @@ class Status extends React.Component {
                     horizontal: "left",
                   }}
                 >
-                  <StatusOptionsMenu id={this.props.id} />
+                  <StatusOptionsMenu status={this.props.status} />
                 </Popover>
               </IconButton>
             </Box>
