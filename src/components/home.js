@@ -4,9 +4,9 @@ import { Box } from "@material-ui/core";
 
 import "./home.css";
 
-import HomeLeftPanel from "./home-left-panel";
-import HomeMiddlePanel from "./home-middle-panel";
-import HomeRightPannel from "./home-right-panel";
+import HomeLeftPanel from "./homeLeftPanel";
+import HomeMiddlePanel from "./homeMiddlePanel";
+import HomeRightPannel from "./homeRightPanel";
 
 function Home() {
   return (
