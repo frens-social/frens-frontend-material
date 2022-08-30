@@ -15,7 +15,7 @@ class StatusOptionsMenu extends React.Component {
   }
 
   onDelete = () => {
-    fetch("http://localhost:4000/api/statuses/" + this.props.status.id, {
+    fetch("http://localhost:4000/api/v1/statuses/" + this.props.status.id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
