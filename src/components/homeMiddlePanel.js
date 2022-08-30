@@ -4,6 +4,7 @@ import { Box } from "@material-ui/core";
 
 import StatusCreator from "./status-creator";
 import Feed from "./feed";
+import FeedSelecter from "./feedSelecter";
 
 function HomeMiddlePanel() {
   return (
@@ -13,6 +14,7 @@ function HomeMiddlePanel() {
         flexDirection="column"
         sx={{ width: 600, m: 0, gap: 8 }}
       >
+        <FeedSelecter />
         <StatusCreator />
         <Feed />
       </Box>
