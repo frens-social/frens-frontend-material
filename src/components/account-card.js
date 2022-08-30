@@ -7,8 +7,6 @@ import {
   Avatar,
 } from "@material-ui/core";
 
-import "./account-card.css";
-
 class AccountCard extends React.Component {
   constructor(props) {
     super(props);
