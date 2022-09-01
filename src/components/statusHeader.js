@@ -25,7 +25,7 @@ function StatusHeader(props) {
           alignItems="center"
           justifyContent={"space-between"}
         >
-          <Button onClick={() => navigate(`/profile/${props.account.id}`)}>
+          <Button onClick={() => navigate(`/profile/${props.account.id}`)} style={{ textTransform: "none" }}>
             <Box
               display="flex"
               alignItems="center"

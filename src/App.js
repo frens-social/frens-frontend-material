@@ -10,6 +10,7 @@ import Feed from "./components/feed";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trends-info";
+import StatusCreator from "./components/statusCreator";
 
 function App() {
   return (
@@ -33,8 +34,6 @@ function App() {
           minWidth="auto"
           sx={{ m: 1, gap: 12 }}
         >
-          
-          
           <Box
             display="flex"
             flexDirection="column"
@@ -43,7 +42,6 @@ function App() {
             <AccountCard />
             <Navigation />
           </Box>
-
 
           <Box
             display="flex"
@@ -56,11 +54,8 @@ function App() {
               <Route path="/profile/:profileId" element={<Profile />} />
             </Routes>
           </Box>
-          
-          
+
           <TrendsInfo />
-        
-        
         </Box>
       </Router>
     </div>

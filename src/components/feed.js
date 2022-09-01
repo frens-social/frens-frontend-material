@@ -1,26 +1,13 @@
 import { Box } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import StatusCreator from "./statusCreator";
 
 import Status from "./status";
 
-class Feed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      statuses: [],
-    };
-  }
+export default function Feed() {
+  const [statuses, setStatuses] = React.useState([]);
 
-  onNewFeedSelect = (event) => {
-    this.setState({
-      selectedFeed: event.target.value,
-    });
-  };
-
-  componentDidMount() {
+  useEffect(() => {
     fetch("http://localhost:4000/api/v1/feeds/public", {
       method: "GET",
       headers: {
@@ -30,16 +17,28 @@ class Feed extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        this.setState({
-          isLoaded: true,
-          statuses: data,
-        });
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
+        setStatuses(data);
       });
-  }
+  }, []);
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      sx={{ width: "100%", m: 0, gap: 8 }}
+    >
+      <StatusCreator />
+      {statuses.map(
+        (status) => (
+          console.log(status),
+          (<Status key={status.id} id={status.id} status={status} account={status.account} />)
+        )
+      )}
+    </Box>
+  );
+}
+
+/*
 
   render() {
     const { error, isLoaded, statuses } = this.state;
@@ -55,14 +54,7 @@ class Feed extends React.Component {
           sx={{ width: "100%", m: 0, gap: 8 }}
         >
           <StatusCreator />
-          <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
-            {statuses.map((status) => (
-              <Status
-                key={status.id}
-                status={status}
-                account={status.account}
-              />
-            ))}
+
           </Box>
         </Box>
       );
@@ -71,3 +63,4 @@ class Feed extends React.Component {
 }
 
 export default Feed;
+*/
