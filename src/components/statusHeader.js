@@ -7,37 +7,27 @@ import StatusOptionsMenu from "./statusOptionsMenu";
 
 function StatusHeader(props) {
   const navigate = useNavigate();
-  
+
   return (
-    <div style={{ backgroundImage: `url(${props.account.banner_url})` }}>
-      <div
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
-        }}
+    <Box display="flex" alignItems="center" justifyContent={"space-between"}>
+      <Button
+        onClick={() => navigate(`/profile/${props.account.id}`)}
+        style={{ textTransform: "none" }}
       >
         <Box
           display="flex"
           alignItems="center"
-          justifyContent={"space-between"}
+          flexWrap="wrap"
+          sx={{ m: 0, p: 0, gap: 12 }}
         >
-          <Button onClick={() => navigate(`/profile/${props.account.id}`)} style={{ textTransform: "none" }}>
-            <Box
-              display="flex"
-              alignItems="center"
-              flexWrap="wrap"
-              sx={{ m: 0, p: 1, gap: 12 }}
-            >
-              <Avatar alt="desu" src={props.account.avatar_url} />
-              <Typography variant="h6">{props.account.username}</Typography>
-            </Box>
-          </Button>
-          <Box>
-            <StatusOptionsMenu account={props.account} />
-          </Box>
+          <Avatar alt="desu" src={props.account.avatar_url} />
+          <Typography variant="h6">{props.account.username}</Typography>
         </Box>
-      </div>
-    </div>
+      </Button>
+      <Box>
+        <StatusOptionsMenu account={props.account} />
+      </Box>
+    </Box>
   );
 }
 
