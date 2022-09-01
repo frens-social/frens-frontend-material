@@ -52,7 +52,7 @@ class Feed extends React.Component {
         <Box
           display="flex"
           flexDirection="column"
-          sx={{ width: 600, m: 0, gap: 8 }}
+          sx={{ width: "100%", m: 0, gap: 8 }}
         >
           <StatusCreator />
           <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>

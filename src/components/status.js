@@ -22,7 +22,7 @@ class Status extends React.Component {
   render() {
     return (
       <Card style={{ marginBottom: "10px" }}>
-        <StatusHeader status={this.props.status} account={this.props.account} />
+        <StatusHeader account={this.props.account} />
 
         <div className="status-text" style={{ padding: "15px" }}>
           <Typography variant="body1" style={{ wordWrap: "break-word" }}>
