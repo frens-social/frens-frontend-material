@@ -1,18 +1,15 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import {
-  Divider,
-  Typography,
-  Box,
-} from "@material-ui/core";
+import { Divider, Typography, Box } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
 import StatusReactionButton from "./statusReactionButton";
+import StatusInteractionsMenu from "./statusInteractionsMenu";
 
 export default function Status(props) {
-
-    return (
+  return (
+    <div>
       <Card>
         <StatusHeader account={props.account} />
 
@@ -23,16 +20,9 @@ export default function Status(props) {
         </div>
 
         <Divider />
-
-        <div className="status-footer">
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <StatusReactionButton />
-          </Box>
-        </div>
+        <StatusInteractionsMenu />
+        <Divider />
       </Card>
-    );
+    </div>
+  );
 }

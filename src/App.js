@@ -45,7 +45,7 @@ function App() {
           <Box
             display="flex"
             flexDirection="column"
-            sx={{ width: 650, m: 0, gap: 8 }}
+            sx={{ width: 550, m: 0, gap: 8 }}
           >
             <Routes>
               <Route path="/" element={<Auth />} />

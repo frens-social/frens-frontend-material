@@ -38,7 +38,7 @@ class StatusOptionsMenu extends React.Component {
 
   render() {
     return (
-      <IconButton onClick={this.toggleOpen} sx={{ marginLeft: "auto" }}>
+      <IconButton onClick={this.toggleOpen} sx={{ marginLeft: "auto", backgroundColor: "black" }}>
         <MoreHorizIcon />
         <Popover
           open={this.state.open}
