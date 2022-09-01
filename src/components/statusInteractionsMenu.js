@@ -11,6 +11,7 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 
 export default function StatusInteractionsMenu(props) {
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [text, setText] = useState("");
 
   return (
@@ -20,14 +21,33 @@ export default function StatusInteractionsMenu(props) {
       justifyContent="space-around"
       sx={{ width: "100%", m: 0, gap: 8 }}
     >
-      
-      
-      
-      <IconButton onClick={() => setEmojiPickerOpen(!emojiPickerOpen)}>
+      <IconButton
+        onClick={(event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          console.log("Opening emoji picker");
+          setAnchorEl(event.currentTarget);
+          setEmojiPickerOpen(true);
+        }}
+      >
         <AddReactionOutlinedIcon />
-        <Popover
+      </IconButton>
+
+      <IconButton>
+        <BookmarkBorderOutlinedIcon />
+      </IconButton>
+
+      <IconButton>
+        <FormatQuoteOutlinedIcon />
+      </IconButton>
+
+      <IconButton>
+        <ReplyOutlinedIcon />
+      </IconButton>
+    
+      <Popover
           open={emojiPickerOpen}
-          anchorEl={document.getElementById("status-interactions-menu")}
+          anchorEl={anchorEl}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center",
@@ -39,35 +59,18 @@ export default function StatusInteractionsMenu(props) {
         >
           <Picker
             data={data}
-            onSelect={(emoji) => setText(text + emoji.native)}
+            autofocus={true}
+            previewPosition="none"
+            onEmojiSelect={(emoji, event) => {
+              setText(text + emoji.native);
+              setEmojiPickerOpen(false);
+            }}
+            onClickOutside={() => {
+              setEmojiPickerOpen(false);
+            }}
           />
         </Popover>
-      </IconButton>
-
-
-
-      <IconButton>
-        <BookmarkBorderOutlinedIcon />
-      </IconButton>
-      
-      
-      
-      <IconButton>
-        <FormatQuoteOutlinedIcon />
-      </IconButton>
-      
-      
-      
-      <IconButton>
-        <ReplyOutlinedIcon />
-      </IconButton>
-    
-    
-    
     </Box>
+    
   );
-}
-
-function handleOnEnter(text) {
-  console.log("enter", text);
 }
