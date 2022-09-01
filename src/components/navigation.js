@@ -1,55 +1,57 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Card, Button, Typography, Box, Divider } from "@material-ui/core";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 
-class Navigation extends React.Component {
+function Navigation() {
+  const navigate = useNavigate();
 
-
-  handleLogout() {
+  const handleHomeButtonClick = () => {
+    navigate("/home");
+  };
+  const handleLogoutButtonClick = () => {
     localStorage.removeItem("token");
-    window.location.href = "/";
-  }
+    navigate("/");
+  };
 
-  render() {
-    return (
-      <div className="navigation">
-        <Card>
-          <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
-            <Button>
-              <HomeIcon />
-              <Typography variant="body1">Home</Typography>
-              </Button>
+  return (
+    <div className="navigation">
+      <Card>
+        <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
+          <Button onClick={handleHomeButtonClick}>
+            <HomeIcon />
+            <Typography variant="body1">Home</Typography>
+          </Button>
 
-            <Divider />
+          <Divider />
 
-            <Button aria-label="Messages">
-              <EmailIcon />
-              <Typography variant="body1">Messages</Typography>
-            </Button>
+          <Button aria-label="Messages">
+            <EmailIcon />
+            <Typography variant="body1">Messages</Typography>
+          </Button>
 
-            <Divider />
+          <Divider />
 
-            <Button aria-label="Notifications">
-              <NotificationsIcon />
-              <Typography variant="body1">Notifications</Typography>
-            </Button>
+          <Button aria-label="Notifications">
+            <NotificationsIcon />
+            <Typography variant="body1">Notifications</Typography>
+          </Button>
 
-            <Divider />
+          <Divider />
 
-            <Button aria-label="Logout" onClick={this.handleLogout}>
-              <LogoutIcon />
-              <Typography variant="body1">Logout</Typography>
-            </Button>
-          </Box>
-        </Card>
-      </div>
-    );
-  }
+          <Button aria-label="Logout" onClick={handleLogoutButtonClick}>
+            <LogoutIcon />
+            <Typography variant="body1">Logout</Typography>
+          </Button>
+        </Box>
+      </Card>
+    </div>
+  );
 }
 
 export default Navigation;
