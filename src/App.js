@@ -6,11 +6,10 @@ import { Box } from "@material-ui/core";
 
 import AccountCard from "./components/accountCard";
 import Auth from "./components/auth";
-import Feed from "./components/feed";
+import Home from "./components/home";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trends-info";
-import StatusCreator from "./components/statusCreator";
 
 function App() {
   return (
@@ -50,8 +49,8 @@ function App() {
           >
             <Routes>
               <Route path="/" element={<Auth />} />
-              <Route path="/home" element={<Feed />} />
-              <Route path="/profile/:profileId" element={<Profile />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/profile/:userId" element={<Profile />} />
             </Routes>
           </Box>
 

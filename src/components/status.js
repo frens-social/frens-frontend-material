@@ -10,29 +10,21 @@ import {
 import StatusHeader from "./statusHeader";
 import StatusReactionButton from "./statusReactionButton";
 
-class Status extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-      image: null,
-    };
-  }
+export default function Status(props) {
 
-  render() {
     return (
-      <Card style={{ marginBottom: "10px" }}>
-        <StatusHeader account={this.props.account} />
+      <Card>
+        <StatusHeader account={props.account} />
 
         <div className="status-text" style={{ padding: "15px" }}>
           <Typography variant="body1" style={{ wordWrap: "break-word" }}>
-            {this.props.status.text}
+            {props.status.text}
           </Typography>
         </div>
 
         <Divider />
 
-        <div className="status-footer" style={{ padding: "15px" }}>
+        <div className="status-footer">
           <Box
             display="flex"
             alignItems="center"
@@ -43,7 +35,4 @@ class Status extends React.Component {
         </div>
       </Card>
     );
-  }
 }
-
-export default Status;

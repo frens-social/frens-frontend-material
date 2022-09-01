@@ -7,17 +7,13 @@ import StatusOptionsMenu from "./statusOptionsMenu";
 
 function StatusHeader(props) {
   const navigate = useNavigate();
-  const handleAvatarClick = () => {
-    navigate(`/accounts/${props.account.id}`);
-  };
-
+  
   return (
     <div style={{ backgroundImage: `url(${props.account.banner_url})` }}>
       <div
         style={{
           background:
             "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
-          padding: "10px",
         }}
       >
         <Box
