@@ -4,7 +4,6 @@ import Card from "@material-ui/core/Card";
 import { Divider, Typography, Box } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
-import StatusReactionButton from "./statusReactionButton";
 import StatusInteractionsMenu from "./statusInteractionsMenu";
 
 export default function Status(props) {
