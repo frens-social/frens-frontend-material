@@ -1,13 +1,11 @@
 import React from "react";
 
-import { Card, IconButton, Typography, Box, Divider } from "@material-ui/core";
+import { Card, Button, Typography, Box, Divider } from "@material-ui/core";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from '@mui/icons-material/Logout';
-
-import "./home.css";
 
 class Navigation extends React.Component {
 
@@ -22,31 +20,31 @@ class Navigation extends React.Component {
       <div className="navigation">
         <Card>
           <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 0 }}>
-            <IconButton aria-label="Home">
+            <Button>
               <HomeIcon />
               <Typography variant="body1">Home</Typography>
-            </IconButton>
+              </Button>
 
             <Divider />
 
-            <IconButton aria-label="Messages">
+            <Button aria-label="Messages">
               <EmailIcon />
               <Typography variant="body1">Messages</Typography>
-            </IconButton>
+            </Button>
 
             <Divider />
 
-            <IconButton aria-label="Notifications">
+            <Button aria-label="Notifications">
               <NotificationsIcon />
               <Typography variant="body1">Notifications</Typography>
-            </IconButton>
+            </Button>
 
             <Divider />
 
-            <IconButton aria-label="Logout" onClick={this.handleLogout}>
+            <Button aria-label="Logout" onClick={this.handleLogout}>
               <LogoutIcon />
               <Typography variant="body1">Logout</Typography>
-            </IconButton>
+            </Button>
           </Box>
         </Card>
       </div>
