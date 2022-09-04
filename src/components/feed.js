@@ -28,7 +28,7 @@ export default function Feed(props) {
     >
       {statuses.map(
         (status) => (
-          (<Status key={status.id} id={status.id} status={status} account={status.account} />)
+          (<Status key={status.id} status={status} account={status.account} />)
         )
       )}
     </Box>

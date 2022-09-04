@@ -12,7 +12,6 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 export default function StatusInteractionsMenu(props) {
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [text, setText] = useState("");
 
   return (
     <Box
@@ -44,33 +43,47 @@ export default function StatusInteractionsMenu(props) {
       <IconButton>
         <ReplyOutlinedIcon />
       </IconButton>
-    
+
       <Popover
-          open={emojiPickerOpen}
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
+        open={emojiPickerOpen}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
+        <Picker
+          data={data}
+          autofocus={true}
+          previewPosition="none"
+          onEmojiSelect={(emoji) => {
+            fetch("http://localhost:4000/api/v1/statuses/" + props.status.id + "/reactions", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+              body: JSON.stringify({
+                emoji: emoji.id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+              });
+
+            console.log(emoji);
+            setEmojiPickerOpen(false);
           }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
+          onClickOutside={() => {
+            setEmojiPickerOpen(false);
           }}
-        >
-          <Picker
-            data={data}
-            autofocus={true}
-            previewPosition="none"
-            onEmojiSelect={(emoji, event) => {
-              setText(text + emoji.native);
-              setEmojiPickerOpen(false);
-            }}
-            onClickOutside={() => {
-              setEmojiPickerOpen(false);
-            }}
-          />
-        </Popover>
+        />
+      </Popover>
     </Box>
-    
   );
 }

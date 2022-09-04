@@ -5,6 +5,7 @@ import { Divider, Typography, Box } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
 import StatusInteractionsMenu from "./statusInteractionsMenu";
+import StatusReactions from "./statusReactions";
 
 export default function Status(props) {
   return (
@@ -18,8 +19,9 @@ export default function Status(props) {
           </Typography>
         </div>
 
+        <StatusReactions status={props.status} />
         <Divider />
-        <StatusInteractionsMenu />
+        <StatusInteractionsMenu status={props.status} />
         <Divider />
       </Card>
     </div>
