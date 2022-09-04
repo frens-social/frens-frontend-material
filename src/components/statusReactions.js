@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Box, Card, CardContent, Typography } from "@material-ui/core";
+import { Box, Badge, Typography } from "@material-ui/core";
 
 import Emoji from "react-emoji-render";
 
@@ -27,11 +27,12 @@ export default function StatusReactions(props) {
   }, []);
 
   return (
-    <Box display="flex" flexDirection="row" style={{ gap: "4px" }}>
+    <Box display="flex" flexDirection="row" style={{ gap: 12 }}>
       {reactionCounts.map((reaction) => (
-        <Box display="flex" flexDirection="row" sx={{ width: "100%", gap: 8 }}>
-          <Emoji text={addColons(reaction.emoji)} />
-          <Typography variant="body4"> {reaction.count} </Typography>
+        <Box display="flex" flexDirection="row" sx={{ width: "100%", gap: 2 }}>
+          <Badge badgeContent={reaction.count} color="primary">
+            <Emoji text={addColons(reaction.emoji)} />
+          </Badge>
         </Box>
       ))}
     </Box>
