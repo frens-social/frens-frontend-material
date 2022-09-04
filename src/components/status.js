@@ -11,10 +11,10 @@ export default function Status(props) {
   return (
     <div>
       <Card>
-        <StatusHeader account={props.account} />
+        <StatusHeader user={props.user} />
 
-        <div className="status-text" style={{ padding: "15px" }}>
-          <Typography variant="body1" style={{ wordWrap: "break-word" }}>
+        <div className="status-text" style={{ padding: "10px" }}>
+          <Typography variant="b1" style={{ wordWrap: "break-word" }}>
             {props.status.text}
           </Typography>
         </div>

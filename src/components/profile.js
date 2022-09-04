@@ -10,10 +10,10 @@ export default function Profile() {
   let params = useParams();
 
   const feedType = "user/" + params.userId;
-  const [account, setAccount] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:4000/api/v1/accounts/" + params.userId;
+    const url = "http://localhost:4000/api/v1/users/" + params.userId;
     fetch(url, {
       method: "GET",
       headers: {
@@ -23,7 +23,7 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAccount(data);
+        setUser(data);
       });
   }, []);
 
@@ -33,7 +33,7 @@ export default function Profile() {
       flexDirection="column"
       sx={{ width: "100%", m: 0, gap: 8 }}
     >
-      <ProfileHeader account={account} />
+      <ProfileHeader user={user} />
       <Feed feedType={feedType} />
     </Box>
   );

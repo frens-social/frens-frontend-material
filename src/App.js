@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Box } from "@material-ui/core";
 
-import AccountCard from "./components/accountCard";
+import UserCard from "./components/userCard";
 import Auth from "./components/auth";
 import Home from "./components/home";
 import Profile from "./components/profile";
@@ -38,7 +38,7 @@ function App() {
             flexDirection="column"
             sx={{ width: 250, m: 0, gap: 8 }}
           >
-            <AccountCard />
+            <UserCard />
             <Navigation />
           </Box>
 

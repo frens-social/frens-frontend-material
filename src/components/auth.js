@@ -72,7 +72,7 @@ class Auth extends React.Component {
                 color="secondary"
                 className="signup-button"
               >
-                Create Account
+                Create User
               </Button>
             </Box>
           </Card>

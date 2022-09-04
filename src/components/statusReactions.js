@@ -37,7 +37,7 @@ export default function StatusReactions(props) {
           <Box
             display="flex"
             flexDirection="row"
-            sx={{ width: "100%", m: 1, gap: 0 }}
+            sx={{ width: "100%", m: 1, gap: 8 }}
           >
             <Typography variant="body1"> {reaction.count} </Typography>
             <Emoji text={addColons(reaction.emoji)} />

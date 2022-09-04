@@ -9,12 +9,12 @@ import {
   CardActionArea,
 } from "@material-ui/core";
 
-function AccountCard() {
-  const [account, setAccount] = useState([]);
+function UserCard() {
+  const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = "http://localhost:4000/api/v1/accounts/self";
+    const url = "http://localhost:4000/api/v1/users/self";
     fetch(url, {
       method: "GET",
       headers: {
@@ -24,7 +24,7 @@ function AccountCard() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAccount(data);
+        setUser(data);
       });
   }
   , []);    
@@ -32,10 +32,10 @@ function AccountCard() {
   return (
     <Card
       style={{
-        backgroundImage: `url(${account.banner_url})`,
+        backgroundImage: `url(${user.banner_url})`,
       }}
     >
-      <CardActionArea onClick={() => navigate(`/profile/${account.id}`)}>
+      <CardActionArea onClick={() => navigate(`/profile/${user.id}`)}>
         <div
           style={{
             background:
@@ -44,8 +44,8 @@ function AccountCard() {
           }}
         >
           <Box display="flex" alignItems="center" sx={{ m: 1, gap: 8 }}>
-            <Avatar alt="desu" src={account.avatar_url} />
-            <Typography variant="h6">{account.username}</Typography>
+            <Avatar alt="desu" src={user.avatar_url} />
+            <Typography variant="h6">{user.username}</Typography>
           </Box>
         </div>
       </CardActionArea>
@@ -53,4 +53,4 @@ function AccountCard() {
   );
 }
 
-export default AccountCard;
+export default UserCard;
