@@ -1,30 +1,21 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import { Divider, Typography, Box, Avatar, Slider } from "@material-ui/core";
+import { Box, CardContent } from "@material-ui/core";
 
-import StatusMainColumn from "./statusMainColumn";
+import StatusColumnAvatar from "./statusColumnAvatar";
+import StatusColumnMain from "./statusColumnMain";
 import StatusFooter from "./statusFooter";
 
 export default function Status(props) {
   return (
     <Card>
-      <Box
-        display="flex"
-        flexDirection="row"
-        allignItems="top"
-        sx={{ width: "100%", m: 0, p: 0, gap: 8 }}
-      >
-        <Box
-          style={{
-            marginLeft: "5px",
-            marginTop: "5px",
-          }}
-        >
-          <Avatar alt="desu" src={props.user.avatar_url} />
+      <CardContent>
+        <Box display="flex" flexDirection="row" sx={{ gap: 12 }}>
+          <StatusColumnAvatar user={props.user} />
+          <StatusColumnMain status={props.status} user={props.user} />
         </Box>
-        <StatusMainColumn status={props.status} user={props.user} />
-      </Box>
+      </CardContent>
       <StatusFooter status={props.status} user={props.user} />
     </Card>
   );

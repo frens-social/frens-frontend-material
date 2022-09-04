@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Avatar, Typography, Box } from "@material-ui/core";
 
-import StatusOptionsMenu from "./statusOptionsMenu";
+import StatusOptionsMenu from "./StatusOptionsMenu";
+import StatusReactions from "./statusReactions";
 
 export default function StatusHeader(props) {
   const navigate = useNavigate();
@@ -13,24 +14,24 @@ export default function StatusHeader(props) {
       display="flex"
       alignItems="flex-start"
       justifyContent={"space-between"}
-      sx={{ m: 0.25, gap: 0 }}
     >
         <Box
           display="flex"
-          alignItems="top"
+          alignItems="center"
           flexWrap="wrap"
           sx={{ m: 0, p: 0, gap: 6 }}
         >
-          <Typography variant="b1" align="left">
+          <Typography variant="body1" align="left">
             <b>{props.user.username}</b>
           </Typography>
-          <Typography variant="b1" align="left">
+          <Typography variant="body1" align="left">
             @{props.user.username}
           </Typography>
-          <Typography variant="b1" align="left">
+          <Typography variant="body4" align="left">
             25m ago
           </Typography>
         </Box>
+        <StatusReactions status={props.status} />
       <StatusOptionsMenu user={props.user} />
     </Box>
   );

@@ -27,22 +27,12 @@ export default function StatusReactions(props) {
   }, []);
 
   return (
-    <Box
-      display="flex"
-      flexDirection="row"
-      style={{ gap: "8px", marginTop: "8px", marginBottom: "8px" }}
-    >
+    <Box display="flex" flexDirection="row" style={{ gap: "4px" }}>
       {reactionCounts.map((reaction) => (
-        <Card key={reaction.name} style={{ backgroundColor: "#D3D3D3" }}>
-            <Box
-              display="flex"
-              flexDirection="row"
-              sx={{ width: "100%", p: 0.5, gap: 8 }}
-            >
-              <Typography variant="body1"> {reaction.count} </Typography>
-              <Emoji text={addColons(reaction.emoji)} />
-            </Box>
-        </Card>
+        <Box display="flex" flexDirection="row" sx={{ width: "100%", gap: 8 }}>
+          <Emoji text={addColons(reaction.emoji)} />
+          <Typography variant="body4"> {reaction.count} </Typography>
+        </Box>
       ))}
     </Box>
   );
