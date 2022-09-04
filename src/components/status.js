@@ -25,7 +25,6 @@ export default function Status(props) {
         </Box>
         <StatusMainColumn status={props.status} user={props.user} />
       </Box>
-      <Divider />
       <StatusFooter status={props.status} user={props.user} />
     </Card>
   );
