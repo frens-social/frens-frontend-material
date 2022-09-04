@@ -14,6 +14,7 @@ export default function StatusMainColumn(props) {
     >
       <StatusHeader user={props.user} />
       <StatusBody status={props.status} />
+      <StatusReactions status={props.status} />
     </Box>
   );
 }
