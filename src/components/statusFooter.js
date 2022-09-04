@@ -9,7 +9,7 @@ import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 
-export default function StatusInteractionsMenu(props) {
+export default function StatusFooter(props) {
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 

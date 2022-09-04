@@ -21,8 +21,7 @@ class StatusOptionsMenu extends React.Component {
       open: !this.state.open,
       anchorEl: event.currentTarget,
     });
-  }
-
+  };
 
   onDelete = () => {
     fetch("http://localhost:4000/api/v1/statuses/" + this.props.status.id, {
@@ -38,7 +37,11 @@ class StatusOptionsMenu extends React.Component {
 
   render() {
     return (
-      <IconButton onClick={this.toggleOpen} sx={{ marginLeft: "auto", backgroundColor: "black" }}>
+      <IconButton
+        onClick={this.toggleOpen}
+        sx={{ marginLeft: "auto", backgroundColor: "black" }}
+        style={{ minWidth: "15px", maxWidth: "15px", minHeight: "15px", maxHeight: "15px" }}
+      >
         <MoreHorizIcon />
         <Popover
           open={this.state.open}
