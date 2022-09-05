@@ -1,7 +1,7 @@
 import { Box } from "@material-ui/core";
 import React, { useEffect } from "react";
 
-import Status from "./status";
+import Status from "./status/status";
 
 export default function Feed(props) {
   const [statuses, setStatuses] = React.useState([]);
