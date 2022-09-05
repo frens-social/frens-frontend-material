@@ -8,7 +8,7 @@ import StatusBody from "./statusBody";
 import StatusFooter from "./statusFooter";
 
 export default function Status(props) {
-  const [userReacted, setUserReacted] = React.useState(false);
+  const [userHasReacted, setUserReacted] = React.useState(false);
 
   return (
     <Card>
@@ -25,7 +25,7 @@ export default function Status(props) {
             <StatusHeader
               user={props.user}
               status={props.status}
-              userReacted={props.userReacted}
+              userHasReacted={props.userHasReacted}
             />
             <StatusBody status={props.status} />
           </Box>

@@ -31,7 +31,7 @@ export default function StatusHeader(props) {
             25m ago
           </Typography>
         </Box>
-        <StatusReactions status={props.status} userReacted={props.userReacted} />
+        <StatusReactions status={props.status} userHasReacted={props.userHasReacted} />
       <StatusOptionsMenu user={props.user} />
     </Box>
   );

@@ -24,7 +24,7 @@ export default function StatusReactions(props) {
         console.log(data);
         setReactionCounts(data);
       });
-  }, [props.userReacted]);
+  }, [props.userHasReacted]);
 
   return (
     <Box display="flex" flexDirection="row" style={{ gap: 12 }}>
