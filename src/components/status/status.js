@@ -5,7 +5,7 @@ import { Avatar, Box, CardContent } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
 import StatusBody from "./statusBody";
-import StatusFooter from "./statusFooter";
+import StatusFooter from "./footer/statusFooter";
 
 export default function Status(props) {
   const [userHasReacted, setUserReacted] = React.useState(false);
