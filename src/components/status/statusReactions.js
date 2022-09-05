@@ -24,7 +24,7 @@ export default function StatusReactions(props) {
         console.log(data);
         setReactionCounts(data);
       });
-  }, []);
+  }, [props.userReacted]);
 
   return (
     <Box display="flex" flexDirection="row" style={{ gap: 12 }}>
@@ -41,8 +41,4 @@ export default function StatusReactions(props) {
 
 function addColons(str) {
   return `:${str}:`;
-}
-
-function userHasReacted(status, emoji) {
-  return false;
 }

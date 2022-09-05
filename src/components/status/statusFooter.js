@@ -83,9 +83,8 @@ export default function StatusFooter(props) {
               .then((data) => {
                 console.log(data);
               });
-
-            console.log(emoji);
             setEmojiPickerOpen(false);
+            props.setUserReacted(true);
           }}
           onClickOutside={() => {
             setEmojiPickerOpen(false);
