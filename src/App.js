@@ -50,7 +50,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Auth />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/profile/:userId" element={<Profile />} />
+              <Route path="/users/:userId" element={<Profile />} />
             </Routes>
           </Box>
 

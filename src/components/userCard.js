@@ -35,7 +35,7 @@ function UserCard() {
         backgroundImage: `url(${user.banner_url})`,
       }}
     >
-      <CardActionArea onClick={() => navigate(`/profile/${user.id}`)}>
+      <CardActionArea onClick={() => navigate(`/users/${user.id}`)}>
         <div
           style={{
             background:
