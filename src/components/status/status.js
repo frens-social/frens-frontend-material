@@ -9,6 +9,8 @@ import {
   Box,
   CardContent,
   CardHeader,
+  CardActions,
+  CardMedia,
 } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
@@ -21,17 +23,27 @@ export default function Status(props) {
   const [userHasReacted, setUserReacted] = React.useState(false);
 
   return (
-    <Card>
-      <StatusHeader status={props.status} />
-      <StatusBody status={props.status} />
-      <StatusReactions status={props.status} />
+    <div>
+      <Box display="flex" flexDirection="column" sx={{ width: "100%", gap: 4 }}>
+        <Card>
+          <StatusHeader status={props.status} />
+          <StatusBody status={props.status} />
+          <StatusReactions
+            status={props.status}
+            userHasReacted={userHasReacted}
+            setUserReacted={setUserReacted}
+            user={props.user}
+          />
 
-      <Divider />
-      <StatusFooter
-        status={props.status}
-        user={props.user}
-        setUserReacted={setUserReacted}
-      />
-    </Card>
+          <CardActions>
+            <StatusFooter
+              status={props.status}
+              user={props.user}
+              setUserReacted={setUserReacted}
+            />
+          </CardActions>
+        </Card>
+      </Box>
+    </div>
   );
 }

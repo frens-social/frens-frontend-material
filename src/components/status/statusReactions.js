@@ -27,13 +27,13 @@ export default function StatusReactions(props) {
   }, [props.userHasReacted]);
 
   return (
-    <Box display="flex" flexDirection="row" style={{ gap: 12 }}>
+    <Box display="flex" 
+    justifyContent="flex-end"
+    flexDirection="row" style={{ gap: 16, marginRight: 16 }}>
       {reactionCounts.map((reaction) => (
-        <Box display="flex" flexDirection="row" sx={{ width: "100%", gap: 2 }}>
           <Badge badgeContent={reaction.count} color="primary">
             <Emoji text={addColons(reaction.emoji)} />
           </Badge>
-        </Box>
       ))}
     </Box>
   );

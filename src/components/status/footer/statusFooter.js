@@ -17,11 +17,6 @@ export default function StatusFooter(props) {
       justifyContent="space-around"
       sx={{ width: "100%", m: 0, p: 0, gap: 8 }}
     >
-      <StatusFooterReactButton
-        status={props.status}
-        userHasReacted={props.userHasReacted}
-        setUserReacted={props.setUserReacted}
-      />
 
       <IconButton style={{ width: buttonSize, height: buttonSize }}>
         <BookmarkBorderOutlinedIcon />
@@ -34,6 +29,12 @@ export default function StatusFooter(props) {
       <IconButton style={{ width: buttonSize, height: buttonSize }}>
         <ReplyOutlinedIcon />
       </IconButton>
+
+      <StatusFooterReactButton
+        status={props.status}
+        userHasReacted={props.userHasReacted}
+        setUserReacted={props.setUserReacted}
+      />
     </Box>
   );
 }

@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { IconButton, Button, Avatar, CardHeader } from "@material-ui/core";
+import { Avatar, CardHeader } from "@material-ui/core";
 
 import StatusOptionsMenu from "./StatusOptionsMenu";
-import StatusReactions from "./statusReactions";
-import StatusHeaderUserInfo from "./statusHeaderUserInfo";
 
 export default function StatusHeader(props) {
   const navigate = useNavigate();
