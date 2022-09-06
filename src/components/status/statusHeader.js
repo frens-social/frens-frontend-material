@@ -10,7 +10,7 @@ export default function StatusHeader(props) {
 
   return (
     <CardHeader
-      avatar={<Avatar alt="desu" src={props.status.user.avatar_url} />}
+      avatar={<Avatar alt="desu" src={props.status.user.avatar_url} onClick={() => navigate("/users/" + props.status.user.id)} />}
       title={props.status.user.username}
       subheader={props.status.user.username}
       action={<StatusOptionsMenu />}
