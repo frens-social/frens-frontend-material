@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Box, Badge, Typography } from "@material-ui/core";
+import { Box, Badge, IconButton } from "@material-ui/core";
 
 import Emoji from "react-emoji-render";
 
