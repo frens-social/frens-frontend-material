@@ -11,7 +11,6 @@ export default function Home() {
         flexDirection="column"
         sx={{ width: "100%", m: 0, gap: 8 }}
     >
-      <StatusCreator />
       <Feed feedType="home" />
     </Box>
   );
