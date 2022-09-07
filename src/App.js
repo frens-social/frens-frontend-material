@@ -8,7 +8,7 @@ import Auth from "./components/auth";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
-import TrendsInfo from "./components/trends-info";
+import TrendsInfo from "./components/trendsInfo";
 
 function App() {
   return (

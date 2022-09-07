@@ -5,6 +5,7 @@ import {
   Avatar,
   Box,
   Button,
+  ButtonGroup,
   Card,
   CardContent,
   CardHeader,
@@ -14,6 +15,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -35,53 +37,63 @@ export default function Navigation() {
   }, []);
 
   return (
-    <Card
-      sx={{
-        width: "100%",
-      }}
-    >
-      <CardHeader
-        avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
-        title={user ? user.display_name : "ERROR"}
-        subheader={user ? user.username : "ERROR"}
-      />
+      <Card style={{ width: 250 }}>
+        <CardHeader
+          avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
+          title={user ? user.display_name : "ERROR"}
+          subheader={user ? user.username : "ERROR"}
+        />
 
-      <CardContent>
-        <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 8 }}>
-          <Button
+        <CardContent>
+          <ButtonGroup
+            orientation="vertical"
             color="primary"
             variant="contained"
-            startIcon={<HomeIcon />}
-            onClick={() => navigate("/home")}
+            fullWidth={true}
           >
-            Home
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            startIcon={<EmailIcon />}
-            onClick={() => navigate("/home")}
-          >
-            Messages
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            startIcon={<NotificationsIcon />}
-            onClick={() => navigate("/home")}
-          >
-            Notifications
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            startIcon={<LogoutIcon />}
-            onClick={() => navigate("/home")}
-          >
-            Logout
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
+            <Button
+              startIcon={<HomeIcon />}
+              onClick={() => {
+                navigate("/home");
+              }}
+            >
+              Home
+            </Button>
+            <Button
+              startIcon={<EmailIcon />}
+              onClick={() => {
+                navigate("/messages");
+              }}
+            >
+              Messages
+            </Button>
+            <Button
+              startIcon={<NotificationsIcon />}
+              onClick={() => {
+                navigate("/notifications");
+              }}
+            >
+              Notifications
+            </Button>
+            <Button
+              startIcon={<SettingsIcon />}
+              onClick={() => {
+                navigate("/settings");
+              }}
+            >
+              Settings
+            </Button>
+            <Button
+              startIcon={<LogoutIcon />}
+              onClick={() => {
+                localStorage.removeItem("token");
+                navigate("/login");
+              }}
+            >
+              Logout
+            </Button>
+          </ButtonGroup>
+        </CardContent>
+      </Card>
   );
 }
