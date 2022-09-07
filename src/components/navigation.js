@@ -1,98 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Card, Button, Typography, Box, Divider } from "@material-ui/core";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+} from "@material-ui/core";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-function Navigation() {
+export default function Navigation() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-  const buttonHeight = "48px";
-
-  const handleHomeButtonClick = () => {
-    navigate("/home");
-  };
-  const handleLogoutButtonClick = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+  useEffect(() => {
+    const url = "http://localhost:4000/api/v1/users/self";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+      });
+  }, []);
 
   return (
-    <div className="navigation">
-      <Box
-        display="flex"
-        flexDirection="column"
-        sx={{ m: 0, gap: 1, width: "100%" }}
-      >
-        <Card>
+    <Card
+      sx={{
+        width: "100%",
+      }}
+    >
+      <CardHeader
+        avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
+        title={user ? user.display_name : "ERROR"}
+        subheader={user ? user.username : "ERROR"}
+      />
+
+      <CardContent>
+        <Box display="flex" flexDirection="column" sx={{ m: 0, gap: 8 }}>
           <Button
-            onClick={handleHomeButtonClick}
-            style={{
-              textTransform: "none",
-              height: buttonHeight,
-              width: "100%",
-            }}
+            color="primary"
+            variant="contained"
+            startIcon={<HomeIcon />}
+            onClick={() => navigate("/home")}
           >
-            <HomeIcon />
-            <Typography variant="body1">Home</Typography>
+            Home
           </Button>
-        </Card>
-
-        <Divider />
-
-        <Card>
           <Button
-            aria-label="Messages"
-            style={{
-              textTransform: "none",
-              height: buttonHeight,
-              width: "100%",
-            }}
+            color="primary"
+            variant="contained"
+            startIcon={<EmailIcon />}
+            onClick={() => navigate("/home")}
           >
-            <EmailIcon />
-            <Typography variant="body1">Messages</Typography>
+            Messages
           </Button>
-        </Card>
-
-        <Divider />
-
-        <Card>
           <Button
-            aria-label="Notifications"
-            style={{
-              textTransform: "none",
-              height: buttonHeight,
-              width: "100%",
-            }}
+            color="primary"
+            variant="contained"
+            startIcon={<NotificationsIcon />}
+            onClick={() => navigate("/home")}
           >
-            <NotificationsIcon />
-            <Typography variant="body1">Notifications</Typography>
+            Notifications
           </Button>
-        </Card>
-
-        <Divider />
-
-        <Card>
           <Button
-            aria-label="Logout"
-            onClick={handleLogoutButtonClick}
-            style={{
-              textTransform: "none",
-              height: buttonHeight,
-              width: "100%",
-            }}
+            color="primary"
+            variant="contained"
+            startIcon={<LogoutIcon />}
+            onClick={() => navigate("/home")}
           >
-            <LogoutIcon />
-            <Typography variant="body1">Logout</Typography>
+            Logout
           </Button>
-        </Card>
-      </Box>
-    </div>
+        </Box>
+      </CardContent>
+    </Card>
   );
 }
-
-export default Navigation;

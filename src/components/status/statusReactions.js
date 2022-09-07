@@ -21,7 +21,6 @@ export default function StatusReactions(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setReactionCounts(data);
       });
   }, [props.userHasReacted]);

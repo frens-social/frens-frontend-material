@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Box } from "@material-ui/core";
 
-import UserCard from "./components/userCard";
 import Auth from "./components/auth";
 import Home from "./components/home";
 import Profile from "./components/profile";
@@ -16,7 +15,8 @@ function App() {
     <div
       className="App"
       style={{
-        backgroundColor: "#f5f8fa",
+        backgroundColor: "#BFAA9C",
+        position: "relative",
         width: "100%",
         height: "100%",
         top: 0,
@@ -32,14 +32,7 @@ function App() {
           minWidth="auto"
           sx={{ m: 1, gap: 12 }}
         >
-          <Box
-            display="flex"
-            flexDirection="column"
-            sx={{ width: 250, m: 0, gap: 8 }}
-          >
-            <UserCard />
-            <Navigation />
-          </Box>
+          <Navigation />
 
           <Box
             display="flex"

@@ -1,5 +1,6 @@
-import { Box } from "@material-ui/core";
 import React, { useEffect } from "react";
+
+import { Box } from "@material-ui/core";
 
 import Status from "./status/status";
 

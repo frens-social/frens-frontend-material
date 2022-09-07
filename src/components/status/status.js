@@ -27,6 +27,8 @@ export default function Status(props) {
       <Box display="flex" flexDirection="column" sx={{ width: "100%", gap: 4 }}>
         <Card>
           <StatusHeader status={props.status} />
+
+          <CardContent>
           <StatusBody status={props.status} />
           <StatusReactions
             status={props.status}
@@ -34,6 +36,7 @@ export default function Status(props) {
             setUserReacted={setUserReacted}
             user={props.user}
           />
+          </CardContent>
 
           <CardActions>
             <StatusFooter
