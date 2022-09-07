@@ -37,7 +37,7 @@ export default function Navigation() {
   }, []);
 
   return (
-      <Card style={{ width: 200 }}>
+      <Card style={{ width: 200, position: "sticky", top: 8 }}>
         <CardHeader
           avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
           title={user ? user.display_name : "ERROR"}

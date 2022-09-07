@@ -1,8 +1,7 @@
-import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Box } from "@material-ui/core";
+import { Box, Fab } from "@material-ui/core";
 
 import TopBar from "./components/topBar/topBar";
 import Auth from "./components/auth";
@@ -10,6 +9,9 @@ import Home from "./components/home";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trendsInfo";
+
+import AddIcon from "@mui/icons-material/Add";
+import { padding } from "@mui/system";
 
 export default function App() {
   return (
@@ -20,8 +22,6 @@ export default function App() {
         position: "absolute",
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100%",
       }}
     >
       <Router>
