@@ -37,7 +37,7 @@ export default function Navigation() {
   }, []);
 
   return (
-      <Card style={{ width: 250 }}>
+      <Card style={{ width: 200 }}>
         <CardHeader
           avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
           title={user ? user.display_name : "ERROR"}
@@ -47,8 +47,8 @@ export default function Navigation() {
         <CardContent>
           <ButtonGroup
             orientation="vertical"
-            color="primary"
-            variant="contained"
+            variant="text"
+            size="large"
             fullWidth={true}
           >
             <Button
@@ -56,6 +56,7 @@ export default function Navigation() {
               onClick={() => {
                 navigate("/home");
               }}
+              style={{ textTransform: "none", justifyContent: "flex-start" }}
             >
               Home
             </Button>
@@ -64,6 +65,7 @@ export default function Navigation() {
               onClick={() => {
                 navigate("/messages");
               }}
+              style={{ textTransform: "none", justifyContent: "flex-start" }}
             >
               Messages
             </Button>
@@ -72,6 +74,7 @@ export default function Navigation() {
               onClick={() => {
                 navigate("/notifications");
               }}
+              style={{ textTransform: "none", justifyContent: "flex-start" }}
             >
               Notifications
             </Button>
@@ -80,6 +83,7 @@ export default function Navigation() {
               onClick={() => {
                 navigate("/settings");
               }}
+              style={{ textTransform: "none", justifyContent: "flex-start" }}
             >
               Settings
             </Button>
@@ -89,6 +93,7 @@ export default function Navigation() {
                 localStorage.removeItem("token");
                 navigate("/login");
               }}
+              style={{ textTransform: "none", justifyContent: "flex-start" }}
             >
               Logout
             </Button>
