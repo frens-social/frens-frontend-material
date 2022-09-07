@@ -14,8 +14,12 @@ import {
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import GroupIcon from '@mui/icons-material/Group';
+import ExploreIcon from '@mui/icons-material/Explore';
+
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -37,68 +41,94 @@ export default function Navigation() {
   }, []);
 
   return (
-      <Card style={{ width: 200, position: "sticky", top: 8 }}>
-        <CardHeader
-          avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
-          title={user ? user.display_name : "ERROR"}
-          subheader={user ? user.username : "ERROR"}
-        />
+    <Card style={{ width: 225, position: "sticky", top: 8 }}>
+      <CardHeader
+        avatar={<Avatar src={user ? user.avatar_url : ""} alt="desu" />}
+        title={user ? user.display_name : "ERROR"}
+        subheader={user ? user.username : "ERROR"}
+      />
 
-        <CardContent>
-          <ButtonGroup
-            orientation="vertical"
-            variant="text"
-            size="large"
-            fullWidth={true}
+      <CardContent>
+        <ButtonGroup
+          orientation="vertical"
+          variant="text"
+          size="large"
+          fullWidth={true}
+        >
+          <Button
+            startIcon={<HomeIcon />}
+            onClick={() => {
+              navigate("/home");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
           >
-            <Button
-              startIcon={<HomeIcon />}
-              onClick={() => {
-                navigate("/home");
-              }}
-              style={{ textTransform: "none", justifyContent: "flex-start" }}
-            >
-              Home
-            </Button>
-            <Button
-              startIcon={<EmailIcon />}
-              onClick={() => {
-                navigate("/messages");
-              }}
-              style={{ textTransform: "none", justifyContent: "flex-start" }}
-            >
-              Messages
-            </Button>
-            <Button
-              startIcon={<NotificationsIcon />}
-              onClick={() => {
-                navigate("/notifications");
-              }}
-              style={{ textTransform: "none", justifyContent: "flex-start" }}
-            >
-              Notifications
-            </Button>
-            <Button
-              startIcon={<SettingsIcon />}
-              onClick={() => {
-                navigate("/settings");
-              }}
-              style={{ textTransform: "none", justifyContent: "flex-start" }}
-            >
-              Settings
-            </Button>
-            <Button
-              startIcon={<LogoutIcon />}
-              onClick={() => {
-                localStorage.removeItem("token");
-                navigate("/login");
-              }}
-              style={{ textTransform: "none", justifyContent: "flex-start" }}
-            >
-              Logout
-            </Button>
-          </ButtonGroup>
-        </CardContent>
-      </Card>
+            Home
+          </Button>
+          <Button
+            startIcon={<ExploreIcon />}
+            onClick={() => {
+              navigate("/explore");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Explore
+          </Button>
+          <Button
+            startIcon={<EmailIcon />}
+            onClick={() => {
+              navigate("/messages");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Messages
+          </Button>
+          <Button
+            startIcon={<NotificationsIcon />}
+            onClick={() => {
+              navigate("/notifications");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Notifications
+          </Button>
+          <Button
+            startIcon={<GroupIcon />}
+            onClick={() => {
+              navigate("/groups");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Groups
+          </Button>
+          <Button
+            startIcon={<FormatListNumberedIcon />}
+            onClick={() => {
+              navigate("/lists");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Lists
+          </Button>
+          <Button
+            startIcon={<BookmarkIcon />}
+            onClick={() => {
+              navigate("/bookmarks");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Bookmarks
+          </Button>
+          <Button
+            startIcon={<SettingsIcon />}
+            onClick={() => {
+              navigate("/settings");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Settings
+          </Button>
+        </ButtonGroup>
+      </CardContent>
+    </Card>
   );
 }
