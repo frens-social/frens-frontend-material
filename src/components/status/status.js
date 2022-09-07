@@ -19,7 +19,6 @@ import StatusReactions from "./statusReactions";
 import StatusFooter from "./footer/statusFooter";
 
 export default function Status(props) {
-  const navigate = useNavigate();
   const [userHasReacted, setUserReacted] = React.useState(false);
 
   return (

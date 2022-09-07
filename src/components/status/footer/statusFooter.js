@@ -12,6 +12,7 @@ export default function StatusFooter(props) {
     <ButtonGroup
       orientation="horizontal"
       variant="text"
+      size="small"
       fullWidth={true}
     >
       <Button startIcon={<ReplyOutlinedIcon />} onClick={(event) => {}} />
