@@ -9,9 +9,7 @@ import Profile from "./components/profile";
 import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trendsInfo";
 import Search from "./components/search";
-
-import AddIcon from "@mui/icons-material/Add";
-import { padding } from "@mui/system";
+import StatusCreatorFab from "./components/statusCreatorFab";
 
 export default function App() {
   return (
@@ -38,7 +36,6 @@ export default function App() {
           sx={{ m: 1, gap: 12 }}
         >
           <Navigation />
-
           <Box
             display="flex"
             flexDirection="column"
@@ -54,10 +51,7 @@ export default function App() {
 
           <TrendsInfo />
         </Box>
-
-        <Fab color="primary" aria-label="add" style={{ position: "fixed", bottom: 32, right: 32 }}>
-          <AddIcon />
-        </Fab>
+        <StatusCreatorFab />
       </Router>
     </div>
   );

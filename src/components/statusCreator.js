@@ -1,26 +1,24 @@
 import React from "react";
 
 import {
-  Button,
-  IconButton,
-  Box,
   Card,
-  Divider,
+  Button,
+  CardHeader,
+  CardContent,
+  CardActions,
   TextField,
+  Box,
+  ButtonGroup,
+  IconButton,
 } from "@material-ui/core";
 
-import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+import ImageIcon from "@mui/icons-material/Image";
+import UploadIcon from "@mui/icons-material/Upload";
+import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
-class StatusCreator extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        privacy: "public",
-    };
-  }
-
-  handleSend() {
+export default function StatusCreator() {
+  function handleSend() {
     fetch("http://localhost:4000/api/v1/statuses", {
       method: "POST",
       headers: {
@@ -42,13 +40,40 @@ class StatusCreator extends React.Component {
       });
   }
 
-  render() {
-    return (
-      <div>
-        
-      </div>
-    );
-  }
+  return (
+    <Card
+      style={{
+        width: 450,
+        padding: 8,
+        position: "absolute",
+        top: "15%",
+      }}
+    >
+      <CardHeader
+        title="Create Post"
+        subheader="What's on your mind?"
+        action={
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
+        }
+      />
+      <CardContent style={{ display: "flex", flexDirection: "column" }}>
+        <TextField
+          multiline
+          minRows={4}
+          maxRows={32}
+          //value={value}
+          //onChange={handleChange}
+          variant="outlined"
+        />
+      </CardContent>
+      <CardActions>
+        <ButtonGroup fullWidth>
+          <Button startIcon={<UploadIcon />}>Upload</Button>
+          <Button endIcon={<SendIcon />}>Send</Button>
+        </ButtonGroup>
+      </CardActions>
+    </Card>
+  );
 }
-
-export default StatusCreator;
