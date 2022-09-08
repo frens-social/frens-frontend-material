@@ -19,6 +19,10 @@ export default function StatusCreatorFab() {
     setOpen(true);
   }
 
+  function handleBackdropClick() {
+    setOpen(false);
+  }
+
   return (
     <div>
       <Fab
@@ -34,13 +38,10 @@ export default function StatusCreatorFab() {
       <Backdrop
         open={open}
         style={{ zIndex: 1000 }}
-        onClick={(event) => {
-          setOpen(false);
-        }}
+        onClick={handleBackdropClick}
       >
         <StatusCreator />
       </Backdrop>
-      />
     </div>
   );
 }
