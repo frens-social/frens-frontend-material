@@ -44,9 +44,7 @@ export default function StatusCreator() {
     <Card
       style={{
         width: 450,
-        padding: 8,
-        position: "absolute",
-        top: "15%",
+        padding: 8
       }}
     >
       <CardHeader

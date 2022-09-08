@@ -40,7 +40,9 @@ export default function StatusCreatorFab() {
         style={{ zIndex: 1000 }}
         onClick={handleBackdropClick}
       >
+        <div onClick={e => e.stopPropagation()}>
         <StatusCreator />
+        </div>
       </Backdrop>
     </div>
   );
