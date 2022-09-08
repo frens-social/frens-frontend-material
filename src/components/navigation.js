@@ -19,7 +19,7 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import GroupIcon from '@mui/icons-material/Group';
 import ExploreIcon from '@mui/icons-material/Explore';
-
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -72,6 +72,15 @@ export default function Navigation() {
             style={{ textTransform: "none", justifyContent: "flex-start" }}
           >
             Explore
+          </Button>
+          <Button
+            startIcon={<SearchIcon />}
+            onClick={() => {
+              navigate("/search");
+            }}
+            style={{ textTransform: "none", justifyContent: "flex-start" }}
+          >
+            Search
           </Button>
           <Button
             startIcon={<EmailIcon />}

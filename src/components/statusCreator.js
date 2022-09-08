@@ -44,43 +44,9 @@ class StatusCreator extends React.Component {
 
   render() {
     return (
-      <Card style={{ width: "100%", backgroundColor: "#f5f5f5" }}>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ m: 0, p: 1, gap: 12 }}
-          style={{ height: "100%", margin: "12px" }}
-        >
-          <TextField
-            id="outlined-textarea"
-            label="Whats new?"
-            variant="outlined"
-            multiline
-            style={{ width: "100%" }}
-            onChange={(e) => this.setState({ text: e.target.value })}
-          />
-        </Box>
-        <Divider />
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ m: 0, p: 1, gap: 12 }}
-        >
-          <IconButton>
-            <InsertPhotoOutlinedIcon />
-          </IconButton>
-          <Button
-            variant="contained"
-            color="primary"
-            endIcon={<SendIcon />}
-            onClick={() => this.handleSend()}
-          >
-            Yeet
-          </Button>
-        </Box>
-      </Card>
+      <div>
+        
+      </div>
     );
   }
 }

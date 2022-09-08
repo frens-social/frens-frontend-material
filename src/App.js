@@ -3,21 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Box, Fab } from "@material-ui/core";
 
-import TopBar from "./components/topBar/topBar";
 import Auth from "./components/auth";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trendsInfo";
+import Search from "./components/search";
 
 import AddIcon from "@mui/icons-material/Add";
 import { padding } from "@mui/system";
 
 export default function App() {
   return (
-    <div
-      className="App"
-    >
+    <div className="App">
       <div
         classname="Background"
         style={{
@@ -49,12 +47,17 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Auth />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/users/:userId" element={<Profile />} />
             </Routes>
           </Box>
 
           <TrendsInfo />
         </Box>
+
+        <Fab color="primary" aria-label="add" style={{ position: "fixed", bottom: 32, right: 32 }}>
+          <AddIcon />
+        </Fab>
       </Router>
     </div>
   );
