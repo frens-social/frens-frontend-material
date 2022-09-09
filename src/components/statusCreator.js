@@ -8,6 +8,7 @@ import {
   CardActions,
   TextField,
   Box,
+  CardMedia,
   ButtonGroup,
   IconButton,
 } from "@material-ui/core";
@@ -18,6 +19,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
 export default function StatusCreator() {
+  const [statusText, setStatusText] = React.useState("");
+  const [statusImage, setStatusImage] = React.useState(null);
+
+  function handleUpload(e) {
+    //setStatusImage(e.target.files[0]);
+    fetch("http://localhost:4000/api/v1/media", {
+      method: "POST",
+      body: e.target.files[0],
+    })
+      .then((res) => res.json())
+  }
+
   function handleSend() {
     fetch("http://localhost:4000/api/v1/statuses", {
       method: "POST",
@@ -44,7 +57,7 @@ export default function StatusCreator() {
     <Card
       style={{
         width: 450,
-        padding: 8
+        padding: 8,
       }}
     >
       <CardHeader
@@ -66,10 +79,19 @@ export default function StatusCreator() {
           variant="outlined"
         />
       </CardContent>
+
+      <CardMedia component="img" image={statusImage} />
+
       <CardActions>
         <ButtonGroup fullWidth>
-          <Button startIcon={<UploadIcon />}>Upload</Button>
-          <Button endIcon={<SendIcon />}>Send</Button>
+          <Button startIcon={<UploadIcon />} component="label">
+            Upload
+            <input type="file" hidden onChange={handleUpload} />
+          </Button>
+          <Button endIcon={<SendIcon />} onClick={handleSend}>
+            {" "}
+            Send{" "}
+          </Button>
         </ButtonGroup>
       </CardActions>
     </Card>
