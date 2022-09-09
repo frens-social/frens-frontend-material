@@ -20,17 +20,27 @@ import SendIcon from "@mui/icons-material/Send";
 
 export default function StatusCreator() {
   const [statusText, setStatusText] = React.useState("");
-  const [statusImage, setStatusImage] = React.useState(null);
+  const [statusImageId, setStatusImageId] = React.useState(null);
 
-  function handleUpload(e) {
-    //setStatusImage(e.target.files[0]);
+  function handleUpload(event) {
+    var headers = new Headers();
+    headers.append("Accept", "application/json");
+    headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
+
+    var formdata = new FormData();
+    formdata.append("file", event.target.files[0]);
+
     fetch("http://localhost:4000/api/v1/media", {
       method: "POST",
-      body: JSON.stringify({
-        media: e.target.files[0],
-      }),
-    })
-      .then((res) => res.json())
+      headers: headers,
+      body: formdata,
+      redirect: "follow",
+  })
+      .then((response) => response.json())
+      .then((result) => {
+        setStatusImageId(result.id);
+      })
+      .catch((error) => console.log("error", error));
   }
 
   function handleSend() {
@@ -82,7 +92,7 @@ export default function StatusCreator() {
         />
       </CardContent>
 
-      <CardMedia component="img" image={statusImage} />
+      <CardMedia component="img" image={"http://localhost:4000/api/v1/media/" + statusImageId} />
 
       <CardActions>
         <ButtonGroup fullWidth>
