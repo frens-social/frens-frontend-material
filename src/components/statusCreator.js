@@ -26,7 +26,9 @@ export default function StatusCreator() {
     //setStatusImage(e.target.files[0]);
     fetch("http://localhost:4000/api/v1/media", {
       method: "POST",
-      body: e.target.files[0],
+      body: JSON.stringify({
+        media: e.target.files[0],
+      }),
     })
       .then((res) => res.json())
   }
