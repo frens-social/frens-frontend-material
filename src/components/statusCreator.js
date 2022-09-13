@@ -69,32 +69,6 @@ export default function StatusCreator() {
       .catch((error) => console.log("error", error));
     }
 
-    function handlePublishDraft() {
-      var headers = new Headers();
-      headers.append("Accept", "application/json");
-      headers.append("Content-Type", "application/json");
-      headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
-  
-      var body = JSON.stringify({
-        text: statusText,
-        privacy: "public",
-      });
-  
-      var requestOptions = {
-        method: "POST",
-        headers: headers,
-        body: body,
-        redirect: "follow",
-      };
-  
-      fetch("http://localhost:4000/api/v1/statuses", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => console.log("error", error));
-      }
-
   return (
     <Card
       style={{
