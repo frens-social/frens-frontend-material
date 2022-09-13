@@ -52,6 +52,7 @@ export default function StatusCreator({setOpen}) {
     var body = JSON.stringify({
       text: statusText,
       privacy: "public",
+      media_ids: statusMediaIDs,
     });
 
     var requestOptions = {
