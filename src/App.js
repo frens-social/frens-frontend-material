@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Box, Fab } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
-import Auth from "./components/auth";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import Navigation from "./components/navigation";
@@ -42,8 +41,7 @@ export default function App() {
             sx={{ width: "25%", m: 0, gap: 8 }}
           >
             <Routes>
-              <Route path="/" element={<Auth />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/users/:userId" element={<Profile />} />
             </Routes>

@@ -20,10 +20,14 @@ import SendIcon from "@mui/icons-material/Send";
 
 export default function StatusCreator() {
   const [statusText, setStatusText] = React.useState("");
-  const [statusImageId, setStatusImageId] = React.useState(null);
   const [statusImageURL, setStatusImageURL] = React.useState(null);
 
-  function handleUpload(event) {
+  function handleCreateStatus() {
+    handleCreateDraft();
+    handlePublishDraft();
+  }
+
+  function handleUploadMedia(event) {
     var headers = new Headers();
     headers.append("Accept", "application/json");
     headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
@@ -44,27 +48,57 @@ export default function StatusCreator() {
       .catch((error) => console.log("error", error));
   }
 
-  function handleSend() {
-    fetch("http://localhost:4000/api/v1/statuses", {
+  function handleCreateDraft() {
+    var headers = new Headers();
+    headers.append("Accept", "application/json");
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
+
+    var body = JSON.stringify({
+      text: statusText,
+      privacy: "public",
+    });
+
+    var requestOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        text: this.state.text,
-        privacy: this.state.privacy,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.props.onSend(data);
-        this.setState({
-          text: "",
-          image: null,
-        });
+      headers: headers,
+      body: body,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:4000/api/v1/statuses", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log("error", error));
+    }
+
+    function handlePublishDraft() {
+      var headers = new Headers();
+      headers.append("Accept", "application/json");
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
+  
+      var body = JSON.stringify({
+        text: statusText,
+        privacy: "public",
       });
-  }
+  
+      var requestOptions = {
+        method: "POST",
+        headers: headers,
+        body: body,
+        redirect: "follow",
+      };
+  
+      fetch("http://localhost:4000/api/v1/statuses", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => console.log("error", error));
+      }
 
   return (
     <Card
@@ -87,8 +121,7 @@ export default function StatusCreator() {
           multiline
           minRows={4}
           maxRows={32}
-          //value={value}
-          //onChange={handleChange}
+          onChange={(event) => setStatusText(event.target.value)}
           variant="outlined"
         />
       </CardContent>
@@ -99,9 +132,9 @@ export default function StatusCreator() {
         <ButtonGroup fullWidth>
           <Button startIcon={<UploadIcon />} component="label">
             Upload
-            <input type="file" hidden onChange={handleUpload} />
+            <input type="file" hidden onChange={handleUploadMedia} />
           </Button>
-          <Button endIcon={<SendIcon />} onClick={handleSend}>
+          <Button endIcon={<SendIcon />} onClick={handleCreateStatus}>
             {" "}
             Send{" "}
           </Button>
