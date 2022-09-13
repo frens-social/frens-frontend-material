@@ -20,7 +20,7 @@ import SendIcon from "@mui/icons-material/Send";
 
 export default function StatusCreator({setOpen}) {
   const [statusText, setStatusText] = React.useState("");
-  const [statusImageURL, setStatusImageURL] = React.useState(null);
+  const [statusMediaIDs, setStatusMediaIDs] = React.useState([]);
 
   function handleUploadMedia(event) {
     var headers = new Headers();
@@ -38,10 +38,12 @@ export default function StatusCreator({setOpen}) {
   })
       .then((response) => response.json())
       .then((result) => {
-        setStatusImageURL("http://localhost:4000/api/v1/media/" + result.id);
+        setStatusMediaIDs([...statusMediaIDs, result.id]);
+        console.log("Media ids are now: " + statusMediaIDs);
       })
       .catch((error) => console.log("error", error));
   }
+
 
   function handleCreateStatus() {
     var headers = new Headers();
@@ -71,7 +73,7 @@ export default function StatusCreator({setOpen}) {
 
       // Close the status creator
       setStatusText("");
-      setStatusImageURL(null);
+      setStatusMediaIDs([]);
       setOpen(false);
     }
 
@@ -101,7 +103,7 @@ export default function StatusCreator({setOpen}) {
         />
       </CardContent>
 
-      <CardMedia component="img" image={statusImageURL} />
+      <CardMedia component="img"/>
 
       <CardActions>
         <ButtonGroup fullWidth>

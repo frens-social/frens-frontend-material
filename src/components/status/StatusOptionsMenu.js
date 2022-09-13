@@ -34,7 +34,7 @@ export default function StatusOptionsMenu({ status, onDelete }) {
       })
       .catch((error) => console.log("error", error));
   
-      onDelete(status.id);
+      //onDelete(status.id);
     }
 
 
