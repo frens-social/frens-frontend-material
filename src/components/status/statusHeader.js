@@ -13,7 +13,7 @@ export default function StatusHeader(props) {
       avatar={<Avatar alt="desu" src={props.status.user.avatar_url} onClick={() => navigate("/users/" + props.status.user.id)} />}
       title={props.status.user.username}
       subheader={props.status.user.username}
-      action={<StatusOptionsMenu />}
+      action={<StatusOptionsMenu status={props.status} onDelete={props.onDelete} />}
     />
   );
 }

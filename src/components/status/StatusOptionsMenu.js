@@ -7,68 +7,56 @@ import { IconButton, Popover, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-class StatusOptionsMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      anchorEl: null,
-    };
+export default function StatusOptionsMenu({ status, onDelete }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
   }
 
-  toggleOpen = (event) => {
-    this.setState({
-      open: !this.state.open,
-      anchorEl: event.currentTarget,
-    });
-  };
+  function handleClose() {
+    setAnchorEl(null);
+  }
 
-  onDelete = () => {
-    fetch("http://localhost:4000/api/v1/statuses/" + this.props.status.id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).catch((err) => {
-      console.log(err);
-    });
-  };
-
-  render() {
-    return (
+  return (
+    <div>
       <IconButton
-        onClick={this.toggleOpen}
-        sx={{ marginLeft: "auto", backgroundColor: "black" }}
-        style={{ minWidth: "15px", maxWidth: "15px", minHeight: "15px", maxHeight: "15px" }}
+        aria-label="more"
+        aria-controls="long-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
       >
         <MoreHorizIcon />
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-        >
-          <Card>
-            <Box display="flex" flexDirection="column" alignItems="center">
-              <Box display="flex" flexDirection="row" alignItems="center">
-                <Button onClick={this.onDelete}>
-                  <DeleteIcon />
-                  <Typography variant="body1">Delete</Typography>
-                </Button>
-              </Box>
-            </Box>
-          </Card>
-        </Popover>
       </IconButton>
-    );
-  }
+      <Popover
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        <Card>
+          <Box display="flex" flexDirection="column" p={2}>
+            <Button
+              variant="contained"
+              color="error"
+              startIcon={<DeleteIcon />}
+              onClick={() => {
+                onDelete(status);
+                handleClose();
+              }}
+            >
+              Delete
+            </Button>
+          </Box>
+        </Card>
+      </Popover>
+    </div>
+  );
 }
-
-export default StatusOptionsMenu;

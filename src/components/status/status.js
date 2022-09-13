@@ -21,6 +21,8 @@ import StatusFooter from "./footer/statusFooter";
 export default function Status(props) {
   const [userHasReacted, setUserReacted] = React.useState(false);
 
+  console.log(props.status);
+
   return (
     <div>
       <Box display="flex" flexDirection="column" sx={{ width: "100%", gap: 4 }}>
