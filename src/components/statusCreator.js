@@ -22,11 +22,6 @@ export default function StatusCreator() {
   const [statusText, setStatusText] = React.useState("");
   const [statusImageURL, setStatusImageURL] = React.useState(null);
 
-  function handleCreateStatus() {
-    handleCreateDraft();
-    handlePublishDraft();
-  }
-
   function handleUploadMedia(event) {
     var headers = new Headers();
     headers.append("Accept", "application/json");
@@ -48,7 +43,7 @@ export default function StatusCreator() {
       .catch((error) => console.log("error", error));
   }
 
-  function handleCreateDraft() {
+  function handleCreateStatus() {
     var headers = new Headers();
     headers.append("Accept", "application/json");
     headers.append("Content-Type", "application/json");
