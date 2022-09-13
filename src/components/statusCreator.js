@@ -18,7 +18,7 @@ import UploadIcon from "@mui/icons-material/Upload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
-export default function StatusCreator() {
+export default function StatusCreator({setOpen}) {
   const [statusText, setStatusText] = React.useState("");
   const [statusImageURL, setStatusImageURL] = React.useState(null);
 
@@ -67,6 +67,12 @@ export default function StatusCreator() {
         console.log(result);
       })
       .catch((error) => console.log("error", error));
+
+
+      // Close the status creator
+      setStatusText("");
+      setStatusImageURL(null);
+      setOpen(false);
     }
 
   return (

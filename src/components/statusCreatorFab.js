@@ -41,7 +41,7 @@ export default function StatusCreatorFab() {
         onClick={handleBackdropClick}
       >
         <div onClick={e => e.stopPropagation()}>
-        <StatusCreator />
+        <StatusCreator setOpen={setOpen} />
         </div>
       </Backdrop>
     </div>
