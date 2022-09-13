@@ -21,13 +21,11 @@ import StatusFooter from "./footer/statusFooter";
 export default function Status(props) {
   const [userHasReacted, setUserReacted] = React.useState(false);
 
-  console.log(props.status);
-
   return (
     <div>
       <Box display="flex" flexDirection="column" sx={{ width: "100%", gap: 4 }}>
         <Card>
-          <StatusHeader status={props.status} />
+          <StatusHeader status={props.status} onDelete={props.onDelete} />
 
           <CardContent>
           <StatusBody status={props.status} />

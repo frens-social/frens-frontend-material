@@ -19,7 +19,11 @@ export default function Feed(props) {
       .then((data) => {
         setStatuses(data);
       });
-  }, []);
+  }, [onDelete]);
+
+  function onDelete(statusId) {
+    console.log("Deleting status with id: " + statusId);
+  }
 
   return (
     <Box
@@ -29,7 +33,7 @@ export default function Feed(props) {
     >
       {statuses.map(
         (status) => (
-          (<Status key={status.id} status={status} user={status.user} />)
+          (<Status key={status.id} status={status} user={status.user} onDelete={onDelete} />)
         )
       )}
     </Box>
