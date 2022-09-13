@@ -19,7 +19,7 @@ export default function Feed(props) {
       .then((data) => {
         setStatuses(data);
       });
-  }, [onDelete]);
+  }, []);
 
   function onDelete(statusId) {
     console.log("Deleting status with id: " + statusId);
