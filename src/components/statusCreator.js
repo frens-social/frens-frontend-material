@@ -97,6 +97,7 @@ export default function StatusCreator({setOpen}) {
           minRows={4}
           maxRows={32}
           onChange={(event) => setStatusText(event.target.value)}
+          value={statusText}
           variant="outlined"
         />
       </CardContent>
