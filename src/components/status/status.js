@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import Card from "@material-ui/core/Card";
 import {
-  IconButton,
-  Divider,
-  Avatar,
   Box,
   CardContent,
-  CardHeader,
   CardActions,
-  CardMedia,
 } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";

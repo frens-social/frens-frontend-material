@@ -7,13 +7,11 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Box,
   CardMedia,
   ButtonGroup,
   IconButton,
 } from "@material-ui/core";
 
-import ImageIcon from "@mui/icons-material/Image";
 import UploadIcon from "@mui/icons-material/Upload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
