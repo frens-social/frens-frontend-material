@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Button, ButtonGroup } from "@material-ui/core";
+import { CardActions, Button, ButtonGroup } from "@material-ui/core";
 
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
@@ -9,16 +9,27 @@ import StatusFooterReactButton from "./statusFooterReactButton";
 
 export default function StatusFooter(props) {
   return (
-    <ButtonGroup
-      orientation="horizontal"
-      variant="text"
-      size="small"
-      fullWidth={true}
-    >
-      <Button startIcon={<ReplyOutlinedIcon />} onClick={(event) => {}} />
-      <Button startIcon={<FormatQuoteOutlinedIcon />} onClick={(event) => {}} />
-      <Button startIcon={<BookmarkBorderOutlinedIcon />} onClick={(event) => {}} />
-      <Button startIcon={<StatusFooterReactButton />} onClick={(event) => {}} />
-    </ButtonGroup>
+    <CardActions>
+      <ButtonGroup
+        orientation="horizontal"
+        variant="text"
+        size="small"
+        fullWidth={true}
+      >
+        <Button startIcon={<ReplyOutlinedIcon />} onClick={(event) => {}} />
+        <Button
+          startIcon={<FormatQuoteOutlinedIcon />}
+          onClick={(event) => {}}
+        />
+        <Button
+          startIcon={<BookmarkBorderOutlinedIcon />}
+          onClick={(event) => {}}
+        />
+        <Button
+          startIcon={<StatusFooterReactButton />}
+          onClick={(event) => {}}
+        />
+      </ButtonGroup>
+    </CardActions>
   );
 }

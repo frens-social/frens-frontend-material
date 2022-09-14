@@ -18,7 +18,7 @@ export default function Status(props) {
         <Card>
           <StatusHeader status={props.status} onDelete={props.onDelete} />
 
-          <CardContent>
+
             <StatusBody status={props.status} />
             <StatusReactions
               status={props.status}
@@ -26,17 +26,14 @@ export default function Status(props) {
               setUserReacted={setUserReacted}
               user={props.user}
             />
-          </CardContent>
 
           <StatusMedia media={props.media} />
 
-          <CardActions>
             <StatusFooter
               status={props.status}
               user={props.user}
               setUserReacted={setUserReacted}
             />
-          </CardActions>
         </Card>
       </Box>
     </div>
