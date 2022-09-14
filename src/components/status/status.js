@@ -1,11 +1,7 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import {
-  Box,
-  CardContent,
-  CardActions,
-} from "@material-ui/core";
+import { ImageList, ImageListItem, Box, CardContent, CardActions, CardMedia } from "@material-ui/core";
 
 import StatusHeader from "./statusHeader";
 import StatusBody from "./statusBody";
@@ -22,14 +18,34 @@ export default function Status(props) {
           <StatusHeader status={props.status} onDelete={props.onDelete} />
 
           <CardContent>
-          <StatusBody status={props.status} />
-          <StatusReactions
-            status={props.status}
-            userHasReacted={userHasReacted}
-            setUserReacted={setUserReacted}
-            user={props.user}
-          />
+            <StatusBody status={props.status} />
+            <StatusReactions
+              status={props.status}
+              userHasReacted={userHasReacted}
+              setUserReacted={setUserReacted}
+              user={props.user}
+            />
           </CardContent>
+
+          <CardMedia>
+            <ImageList
+              sx={{ width: 500, height: 450 }}
+              variant="quilted"
+              cols={4}
+              rowHeight={121}
+            >
+              {props.media.map((item) => (
+                <ImageListItem
+                  key={item.id}
+                >
+                  <img
+                    srcSet={`http://localhost:4000/api/v1/media/${item.id}`}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </CardMedia>
 
           <CardActions>
             <StatusFooter

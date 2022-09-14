@@ -33,7 +33,7 @@ export default function Feed(props) {
     >
       {statuses.map(
         (status) => (
-          (<Status key={status.id} status={status} user={status.user} onDelete={onDelete} />)
+          (<Status key={status.id} status={status} user={status.user} media={status.media} onDelete={onDelete} />)
         )
       )}
     </Box>
