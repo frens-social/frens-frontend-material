@@ -18,22 +18,25 @@ export default function Status(props) {
         <Card>
           <StatusHeader status={props.status} onDelete={props.onDelete} />
 
+          <StatusBody status={props.status} />
+          <StatusReactions
+            status={props.status}
+            userHasReacted={userHasReacted}
+            setUserReacted={setUserReacted}
+            user={props.user}
+          />
 
-            <StatusBody status={props.status} />
-            <StatusReactions
-              status={props.status}
-              userHasReacted={userHasReacted}
-              setUserReacted={setUserReacted}
-              user={props.user}
-            />
+          <StatusMedia
+            status={props.status}
+            media={props.media}
+            handleMediaClick={props.handleMediaClick}
+          />
 
-          <StatusMedia media={props.media} setMediaViewerOpen={props.setMediaViewerOpen} />
-
-            <StatusFooter
-              status={props.status}
-              user={props.user}
-              setUserReacted={setUserReacted}
-            />
+          <StatusFooter
+            status={props.status}
+            user={props.user}
+            setUserReacted={setUserReacted}
+          />
         </Card>
       </Box>
     </div>

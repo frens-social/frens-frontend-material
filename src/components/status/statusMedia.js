@@ -1,10 +1,6 @@
 import React from "react";
 
-import {
-  ImageList,
-  ImageListItem,
-  CardMedia,
-} from "@material-ui/core";
+import { ImageList, ImageListItem, CardMedia } from "@material-ui/core";
 
 export default function StatusMedia(props) {
   function calculateColumns(item_count) {
@@ -31,19 +27,16 @@ export default function StatusMedia(props) {
     }
   }
 
-  function handleMediaClick(media) {
-  props.setMediaViewerOpen(true);
-  }
-
   return (
     <CardMedia>
       <ImageList sx={{ width: 500, height: 450 }} cols={4} rowHeight={121}>
-        {props.media.map((item) => (
+        {props.media.map((item, index) => (
           <ImageListItem
             key={item.id}
             cols={calculateColumns(props.media.length)}
             rows={calculateRows(props.media.length)}
-            onClick={() => handleMediaClick(item)}
+            onClick={() => props.handleMediaClick(props.status, index)}
+            style={{ cursor: "pointer" }}
           >
             <img
               srcSet={`http://localhost:4000/api/v1/media/${item.id}`}

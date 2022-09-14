@@ -7,7 +7,9 @@ import Status from "../status/status";
 
 export default function Feed(props) {
   const [statuses, setStatuses] = React.useState([]);
+  const [mediaViewerStatus, setMediaViewerStatus] = React.useState(null);
   const [mediaViewerOpen, setMediaViewerOpen] = React.useState(false);
+  const [mediaViewerMediaIndex, setMediaViewerMediaIndex] = React.useState(0);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/v1/feeds/" + props.feedType, {
@@ -23,6 +25,15 @@ export default function Feed(props) {
       });
   }, []);
 
+  function handleMediaClick(status, media_index) {
+    console.log("Media clicked for status: " + status.id + " media index: " + media_index);
+    console.log("Setting media viewer status to: " + status.id);
+    setMediaViewerStatus(status);
+    console.log("Setting media viewer media index to: " + media_index);
+    setMediaViewerMediaIndex(media_index);
+    console.log("Setting media viewer open to: true");
+    setMediaViewerOpen(true);
+  }
 
   return (
     <div>
@@ -37,11 +48,17 @@ export default function Feed(props) {
             status={status}
             user={status.user}
             media={status.media}
-            setMediaViewerOpen={setMediaViewerOpen}
+            handleMediaClick={handleMediaClick}
           />
         ))}
       </Box>
-      <MediaViewer open={mediaViewerOpen} setOpen={setMediaViewerOpen} />
+      <MediaViewer
+        open={mediaViewerOpen}
+        setOpen={setMediaViewerOpen}
+        status={mediaViewerStatus}
+        media={mediaViewerStatus ? mediaViewerStatus.media : []}
+        index={mediaViewerMediaIndex}
+      />
     </div>
   );
 }
