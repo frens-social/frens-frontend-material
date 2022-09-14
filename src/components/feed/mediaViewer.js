@@ -6,9 +6,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function StatusMediaViewer(props) {
-  function handleBackdropClick() {
+  function handleBackdropClick(event) {
     console.log("Media viewer backdrop clicked. Closing media viewer.");
-    props.setOpen(false);
+    if (event.target === event.currentTarget) {
+      props.setOpen(false);
+    }
   }
 
   function handleBackClick() {
@@ -29,24 +31,23 @@ export default function StatusMediaViewer(props) {
 
   return (
     <Backdrop
-    className="media-viewer-backdrop"
+      className="media-viewer-backdrop"
       open={props.open}
       style={{ zIndex: 1000, backgroundColor: "rgba(0, 0, 0, 0.9)" }}
-      onClick={handleBackdropClick}
     >
-      <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", height: "100%" }}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        sx={{ width: "100%", height: "100%", gap: 8 }}
+      >
         <Box
           display="flex"
           flexDirection="row"
-          sx={{ width: "100%", height: "100%", gap: 8 }}
+          alignItems="center"
+          justifyContent="space-between"
+          flexGrow={1}
+          onClick={(e) => handleBackdropClick(e)}
         >
-          <Box
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            flexGrow={1}
-          >
             <ArrowBackIcon
               onClick={handleBackClick}
               style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
@@ -64,16 +65,15 @@ export default function StatusMediaViewer(props) {
               onClick={handleForwardClick}
               style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
             />
-          </Box>
-          <Card
-            style={{
-              width: "450px",
-            }}
-          >
-            Comments go here
-          </Card>
         </Box>
-      </div>
+        <Card
+          style={{
+            width: "450px",
+          }}
+        >
+          Comments go here
+        </Card>
+      </Box>
     </Backdrop>
   );
 }
