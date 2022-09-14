@@ -14,6 +14,8 @@ import {
 } from "@material-ui/core";
 
 import CardHeaderUser from "./cardHeaderUser";
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
@@ -44,9 +46,20 @@ export default function Navigation() {
       });
   }, []);
 
+  const menuButtons = [
+    {
+      icon: <LogoutIcon />,
+      text: "Logout",
+      onClick: () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+      },
+    },
+  ];
+
   return (
     <Card style={{ width: 225, position: "sticky", top: 8 }}>
-      <CardHeaderUser user={user} />
+      <CardHeaderUser user={user} menuButtons={menuButtons} />
 
       <CardContent>
         <ButtonGroup

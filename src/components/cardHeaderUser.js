@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Popover,
-  Card,
-  Box,
   Button,
   CardHeader,
   IconButton,
@@ -12,8 +10,6 @@ import {
   Typography,
   ButtonGroup,
 } from "@material-ui/core";
-
-import DeleteIcon from "@mui/icons-material/Delete";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
@@ -68,10 +64,10 @@ export default function CardHeaderprops(props) {
         }}
         action={
           <div>
-          <IconButton onClick={(event) => setAnchorEl(event.currentTarget)}>
-            <MoreHorizIcon />
-          </IconButton>
-          <Popover
+            <IconButton onClick={(event) => setAnchorEl(event.currentTarget)}>
+              <MoreHorizIcon />
+            </IconButton>
+            <Popover
               open={menuOpen}
               anchorEl={anchorEl}
               onClose={() => setAnchorEl(null)}
@@ -80,15 +76,24 @@ export default function CardHeaderprops(props) {
                 horizontal: "right",
               }}
             >
-              <ButtonGroup>
-                <Button
-                  variant="contained"
-                  color="error"
-                  startIcon={<DeleteIcon />}
-                  //onClick={() => DeleteStatus()}
-                >
-                  Delete
-                </Button>
+              <ButtonGroup
+                orientation="vertical"
+                variant="text"
+                size="large"
+                fullWidth={true}
+              >
+                {props.menuButtons.map((button) => (
+                  <Button
+                    startIcon={button.icon}
+                    onClick={() => {
+                      button.onClick();
+                      setAnchorEl(null);
+                    }}
+                    style={{ textTransform: "none" }}
+                  >
+                    {button.text}
+                  </Button>
+                ))}
               </ButtonGroup>
             </Popover>
           </div>
