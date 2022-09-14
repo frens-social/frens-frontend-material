@@ -58,7 +58,7 @@ export default function Navigation() {
           <Button
             startIcon={<HomeIcon />}
             onClick={() => {
-              navigate("/home");
+              navigate("/");
             }}
             style={{ textTransform: "none", justifyContent: "flex-start" }}
           >
