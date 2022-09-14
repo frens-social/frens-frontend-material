@@ -103,7 +103,15 @@ export default function StatusCreator({setOpen}) {
         />
       </CardContent>
 
-      <CardMedia component="img"/>
+      <CardMedia>
+        {statusMediaIDs.map((mediaID) => (
+          <img
+            src={"http://localhost:4000/api/v1/media/" + mediaID}
+            alt="Media"
+            style={{ width: 100, height: 100 }}
+          />
+        ))}
+      </CardMedia>
 
       <CardActions>
         <ButtonGroup fullWidth>
