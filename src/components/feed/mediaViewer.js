@@ -7,8 +7,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function StatusMediaViewer(props) {
   function handleBackdropClick(event) {
-    console.log("Media viewer backdrop clicked. Closing media viewer.");
     if (event.target === event.currentTarget) {
+      console.log("Media viewer backdrop clicked. Closing media viewer.");
       props.setOpen(false);
     }
   }
@@ -29,6 +29,18 @@ export default function StatusMediaViewer(props) {
     }
   }
 
+  function isFirstMedia() {
+    if (props.index === 0) {
+      return true;
+    }
+  }
+
+  function isLastMedia() {
+    if (props.index === props.media.length - 1) {
+      return true;
+    }
+  }
+
   return (
     <Backdrop
       className="media-viewer-backdrop"
@@ -38,7 +50,7 @@ export default function StatusMediaViewer(props) {
       <Box
         display="flex"
         flexDirection="row"
-        sx={{ width: "100%", height: "100%"}}
+        sx={{ width: "100%", height: "100%" }}
       >
         <Box
           display="flex"
@@ -50,7 +62,12 @@ export default function StatusMediaViewer(props) {
         >
           <ArrowBackIcon
             onClick={handleBackClick}
-            style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
+            style={{
+              color: isFirstMedia() ? "transparent" : "rgba(255, 255, 255, 0.5)",
+              cursor: "pointer",
+              fontSize: "72px",
+              display: "block",
+            }}
           />
           {props.media.map((media, index) => (
             <img
@@ -62,26 +79,26 @@ export default function StatusMediaViewer(props) {
               }}
             />
           ))}
-            <ArrowForwardIcon
-              onClick={handleForwardClick}
-              style={{
-                color: "white",
-                cursor: "pointer",
-                fontSize: "72px",
-                display: "block",
-              }}
-            />
+          <ArrowForwardIcon
+            onClick={handleForwardClick}
+            style={{
+              color: isLastMedia() ? "transparent" : "rgba(255, 255, 255, 0.5)",
+              cursor: "pointer",
+              fontSize: "72px",
+              display: "block",
+            }}
+          />
         </Box>
         <Card
           style={{
             width: "450px",
           }}
         >
-      <CardHeader
-        avatar=<Avatar/>
-        title="Media Viewer"
-        subheader="View media in a larger format."
-      />
+          <CardHeader
+            avatar=<Avatar />
+            title="Media Viewer"
+            subheader="View media in a larger format."
+          />
         </Card>
       </Box>
     </Backdrop>
