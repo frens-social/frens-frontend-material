@@ -7,19 +7,23 @@ import {
   Button,
   ButtonGroup,
   Card,
+  IconButton,
   CardContent,
   CardHeader,
+  Typography,
 } from "@material-ui/core";
+
+import CardHeaderUser from "./cardHeaderUser";
 
 import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SettingsIcon from "@mui/icons-material/Settings";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import GroupIcon from '@mui/icons-material/Group';
-import ExploreIcon from '@mui/icons-material/Explore';
-import SearchIcon from '@mui/icons-material/Search';
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import GroupIcon from "@mui/icons-material/Group";
+import ExploreIcon from "@mui/icons-material/Explore";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -42,11 +46,7 @@ export default function Navigation() {
 
   return (
     <Card style={{ width: 225, position: "sticky", top: 8 }}>
-      <CardHeader
-        avatar={<Avatar src={user ? user.avatar_url : ""} />}
-        title={user ? user.display_name : "ERROR"}
-        subheader={user ? user.username : "ERROR"}
-      />
+      <CardHeaderUser user={user} />
 
       <CardContent>
         <ButtonGroup

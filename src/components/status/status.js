@@ -4,10 +4,10 @@ import Card from "@material-ui/core/Card";
 import { Box, CardContent, CardActions } from "@material-ui/core";
 
 import StatusMedia from "./statusMedia";
-import StatusHeader from "./statusHeader";
 import StatusBody from "./statusBody";
 import StatusReactions from "./statusReactions";
 import StatusFooter from "./footer/statusFooter";
+import CardHeaderUser from "../cardHeaderUser";
 
 export default function Status(props) {
   const [userHasReacted, setUserReacted] = React.useState(false);
@@ -16,7 +16,7 @@ export default function Status(props) {
     <div>
       <Box display="flex" flexDirection="column" sx={{ width: "100%", gap: 4 }}>
         <Card>
-          <StatusHeader status={props.status} onDelete={props.onDelete} />
+          <CardHeaderUser status={props.status} user={props.user} />
 
           <StatusBody status={props.status} />
           <StatusReactions
