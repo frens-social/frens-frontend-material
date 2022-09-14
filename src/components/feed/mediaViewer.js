@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, Backdrop, Box } from "@material-ui/core";
+import { Card, Backdrop, Box, CardHeader, Avatar } from "@material-ui/core";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -38,7 +38,7 @@ export default function StatusMediaViewer(props) {
       <Box
         display="flex"
         flexDirection="row"
-        sx={{ width: "100%", height: "100%", gap: 8 }}
+        sx={{ width: "100%", height: "100%"}}
       >
         <Box
           display="flex"
@@ -48,22 +48,28 @@ export default function StatusMediaViewer(props) {
           flexGrow={1}
           onClick={(e) => handleBackdropClick(e)}
         >
-            <ArrowBackIcon
-              onClick={handleBackClick}
-              style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
+          <ArrowBackIcon
+            onClick={handleBackClick}
+            style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
+          />
+          {props.media.map((media, index) => (
+            <img
+              key={index}
+              src={`http://localhost:4000/api/v1/media/${media.id}`}
+              style={{
+                display: index === props.index ? "block" : "none",
+                maxWidth: "75%",
+              }}
             />
-            {props.media.map((media, index) => (
-              <img
-                key={index}
-                src={`http://localhost:4000/api/v1/media/${media.id}`}
-                style={{
-                  display: index === props.index ? "block" : "none",
-                }}
-              />
-            ))}
+          ))}
             <ArrowForwardIcon
               onClick={handleForwardClick}
-              style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
+              style={{
+                color: "white",
+                cursor: "pointer",
+                fontSize: "72px",
+                display: "block",
+              }}
             />
         </Box>
         <Card
@@ -71,7 +77,11 @@ export default function StatusMediaViewer(props) {
             width: "450px",
           }}
         >
-          Comments go here
+      <CardHeader
+        avatar=<Avatar/>
+        title="Media Viewer"
+        subheader="View media in a larger format."
+      />
         </Card>
       </Box>
     </Backdrop>
