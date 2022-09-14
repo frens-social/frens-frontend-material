@@ -58,6 +58,7 @@ export default function Feed(props) {
         status={mediaViewerStatus}
         media={mediaViewerStatus ? mediaViewerStatus.media : []}
         index={mediaViewerMediaIndex}
+        setIndex={setMediaViewerMediaIndex}
       />
     </div>
   );
