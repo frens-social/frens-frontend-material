@@ -12,12 +12,6 @@ import {
 export default function StatusMedia(props) {
 
     function calculateColumns(item_count){
-        // 1 equals 4
-        // 2 equals 2
-        // 3 equals 1.33
-        // 4 should be 2
-        // 5 should be 1.6
-
         if (item_count == 1){
             return 4
         }
@@ -27,43 +21,24 @@ export default function StatusMedia(props) {
         else if (item_count == 3){
             return 1.33
         }
-        else if (item_count == 4){
+        else if (item_count >= 4){
             return 2
-        }
-        else if (item_count == 5){
-            return 1.6
-        }
-        else if (item_count == 6){
-            return 2
-        }
-        else if (item_count == 7){
-            return 1.6
         }
     }
 
     function calculateRows(item_count){
-
-        if (item_count == 1){
-            return 4
-        }
-        else if (item_count == 2){
-            return 2
-        }
-        else if (item_count == 3){
-            return 1.33
-        }
-        else if (item_count == 4){
-            return 2
-        }
-        else if (item_count == 5){
-            return 1.6
-        }
-        else if (item_count == 6){
-            return 2
-        }
-        else if (item_count == 7){
-            return 1.6
-        }
+      if (item_count == 1){
+        return 4
+    }
+    else if (item_count == 2){
+        return 2
+    }
+    else if (item_count == 3){
+        return 1.33
+    }
+    else if (item_count >= 4){
+        return 2
+    }
     }
 
   return (
