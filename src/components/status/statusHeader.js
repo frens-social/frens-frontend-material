@@ -14,6 +14,7 @@ export default function StatusHeader(props) {
       title={props.status.user.username}
       subheader={props.status.user.username}
       action={<StatusOptionsMenu status={props.status} onDelete={props.onDelete} />}
+      style={{ backgroundColor: "#bbbbbb" }}
     />
   );
 }
