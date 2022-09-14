@@ -27,7 +27,7 @@ export default function Status(props) {
               user={props.user}
             />
 
-          <StatusMedia media={props.media} />
+          <StatusMedia media={props.media} setMediaViewerOpen={props.setMediaViewerOpen} />
 
             <StatusFooter
               status={props.status}

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Box } from "@material-ui/core";
 
 import ProfileHeader from "./profileHeader";
-import Feed from "./feed";
+import Feed from "./feed/feed";
 
 export default function Profile() {
   let params = useParams();

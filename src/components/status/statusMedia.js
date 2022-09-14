@@ -31,6 +31,10 @@ export default function StatusMedia(props) {
     }
   }
 
+  function handleMediaClick(media) {
+  props.setMediaViewerOpen(true);
+  }
+
   return (
     <CardMedia>
       <ImageList sx={{ width: 500, height: 450 }} cols={4} rowHeight={121}>
@@ -39,11 +43,11 @@ export default function StatusMedia(props) {
             key={item.id}
             cols={calculateColumns(props.media.length)}
             rows={calculateRows(props.media.length)}
+            onClick={() => handleMediaClick(item)}
           >
             <img
               srcSet={`http://localhost:4000/api/v1/media/${item.id}`}
               loading="lazy"
-              onClick
             />
           </ImageListItem>
         ))}

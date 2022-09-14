@@ -1,6 +1,5 @@
 import React from "react";
-import StatusCreator from "./statusCreator";
-import Feed from "./feed";
+import Feed from "./feed/feed";
 
 import { Box } from "@material-ui/core";
 
