@@ -1,5 +1,6 @@
-import { Backdrop, Box } from "@material-ui/core";
 import React from "react";
+
+import { Card, Backdrop, Box } from "@material-ui/core";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -12,48 +13,65 @@ export default function StatusMediaViewer(props) {
 
   function handleBackClick() {
     console.log("Media viewer back clicked. Decrementing media viewer index.");
-    props.setIndex(props.index - 1);
+    if (props.index > 0) {
+      props.setIndex(props.index - 1);
+    }
   }
 
   function handleForwardClick() {
     console.log(
       "Media viewer forward clicked. Incrementing media viewer index."
     );
-    props.setIndex(props.index + 1);
+    if (props.index < props.media.length - 1) {
+      props.setIndex(props.index + 1);
+    }
   }
 
   return (
     <Backdrop
+    className="media-viewer-backdrop"
       open={props.open}
       style={{ zIndex: 1000, backgroundColor: "rgba(0, 0, 0, 0.9)" }}
       onClick={handleBackdropClick}
     >
-      <div onClick={(e) => e.stopPropagation()}>
+      <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", height: "100%" }}>
         <Box
           display="flex"
           flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
+          sx={{ width: "100%", height: "100%", gap: 8 }}
         >
-          <ArrowBackIcon
-            onClick={handleBackClick}
-            style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
-          />
-          {props.media.map((media, index) => (
-            <img
-              key={index}
-              src={`http://localhost:4000/api/v1/media/${media.id}`}
-              style={{
-                display: index === props.index ? "block" : "none",
-                maxWidth: "100%",
-                maxHeight: "100%",
-              }}
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-between"
+            flexGrow={1}
+          >
+            <ArrowBackIcon
+              onClick={handleBackClick}
+              style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
             />
-          ))}
-          <ArrowForwardIcon
-            onClick={handleForwardClick}
-            style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
-          />
+            {props.media.map((media, index) => (
+              <img
+                key={index}
+                src={`http://localhost:4000/api/v1/media/${media.id}`}
+                style={{
+                  display: index === props.index ? "block" : "none",
+                }}
+              />
+            ))}
+            <ArrowForwardIcon
+              onClick={handleForwardClick}
+              style={{ color: "white", cursor: "pointer", fontSize: "72px" }}
+            />
+          </Box>
+          <Card
+            style={{
+              width: "450px",
+            }}
+          >
+            Comments go here
+          </Card>
         </Box>
       </div>
     </Backdrop>
