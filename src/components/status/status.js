@@ -1,8 +1,9 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import { ImageList, ImageListItem, Box, CardContent, CardActions, CardMedia } from "@material-ui/core";
+import { Box, CardContent, CardActions } from "@material-ui/core";
 
+import StatusMedia from "./statusMedia";
 import StatusHeader from "./statusHeader";
 import StatusBody from "./statusBody";
 import StatusReactions from "./statusReactions";
@@ -27,25 +28,7 @@ export default function Status(props) {
             />
           </CardContent>
 
-          <CardMedia>
-            <ImageList
-              sx={{ width: 500, height: 450 }}
-              variant="quilted"
-              cols={4}
-              rowHeight={121}
-            >
-              {props.media.map((item) => (
-                <ImageListItem
-                  key={item.id}
-                >
-                  <img
-                    srcSet={`http://localhost:4000/api/v1/media/${item.id}`}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          </CardMedia>
+          <StatusMedia media={props.media} />
 
           <CardActions>
             <StatusFooter
