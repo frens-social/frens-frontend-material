@@ -4,11 +4,11 @@ import { ImageList, ImageListItem, CardMedia } from "@material-ui/core";
 
 export default function StatusMedia(props) {
   function calculateColumns(item_count) {
-    if (item_count == 1) {
+    if (item_count === 1) {
       return 4;
-    } else if (item_count == 2) {
+    } else if (item_count === 2) {
       return 2;
-    } else if (item_count == 3) {
+    } else if (item_count === 3) {
       return 1.33;
     } else if (item_count >= 4) {
       return 2;
@@ -16,11 +16,11 @@ export default function StatusMedia(props) {
   }
 
   function calculateRows(item_count) {
-    if (item_count == 1) {
+    if (item_count === 1) {
       return 4;
-    } else if (item_count == 2) {
+    } else if (item_count === 2) {
       return 2;
-    } else if (item_count == 3) {
+    } else if (item_count === 3) {
       return 1.33;
     } else if (item_count >= 4) {
       return 2;

@@ -19,25 +19,6 @@ export default function CardHeaderprops(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
 
-  function DeleteStatus() {
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
-
-    fetch("http://localhost:4000/api/v1/statuses/" + props.status.id, {
-      method: "DELETE",
-      headers: headers,
-      redirect: "follow",
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => console.log("error", error));
-
-    //onDelete(status.id);
-  }
-
   return (
     <div>
       <CardHeader

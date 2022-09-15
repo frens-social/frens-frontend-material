@@ -1,7 +1,6 @@
 import React from "react";
 
-import Card from "@material-ui/core/Card";
-import { Box, CardContent, CardActions } from "@material-ui/core";
+import { Card, Box } from "@material-ui/core";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from '@mui/icons-material/Report';

@@ -51,9 +51,9 @@ export default function Auth() {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-          localStorage.setItem("token", result.token);
-          localStorage.setItem("username", result.username);
-          window.location.replace("http://localhost:3001/");
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.username);
+        window.location.replace("http://localhost:3001/");
       })
       .catch((error) => console.log("error", error));
   }
@@ -122,6 +122,7 @@ export default function Auth() {
           <CardMedia>
             <img
               src="https://i.kym-cdn.com/entries/icons/original/000/029/323/doggo.jpg"
+              alt="doggo"
               style={{ width: "100%" }}
             />
           </CardMedia>

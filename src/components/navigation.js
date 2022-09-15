@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
-  Avatar,
-  Box,
   Button,
   ButtonGroup,
   Card,
-  IconButton,
   CardContent,
-  CardHeader,
-  Typography,
 } from "@material-ui/core";
 
 import CardHeaderUser from "./cardHeaderUser";
