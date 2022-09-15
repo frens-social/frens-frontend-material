@@ -26,7 +26,7 @@ export default function Home() {
         >
           <Tab label="For You" />
           <Tab label="Local" />
-          <Tab label="Global" />
+          <Tab label="Federated" />
         </Tabs>
       </Card>
       <Feed feedType="home" />

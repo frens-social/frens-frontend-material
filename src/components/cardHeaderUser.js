@@ -27,21 +27,23 @@ export default function CardHeaderprops(props) {
             onClick={() => {
               navigate("/profile/" + props.user.id);
             }}
-            style={{ padding: 0 }}
           >
             <Avatar src={props.user ? props.user.avatar_url : ""} />
           </IconButton>
         }
         title={
-          <Typography variant="h6">
+          <Typography variant="body1">
             {props.user ? props.user.display_name : ""}
           </Typography>
         }
-        subheader=<Typography variant="body2">
-          {props.user ? "@" + props.user.username : ""}
-        </Typography>
+        subheader={
+          <Typography variant="body2" color="textSecondary">
+            @{props.user ? props.user.username : ""}
+          </Typography>
+        }
         style={{
-          backgroundColor: "#bbbbbbbb",
+          //backgroundColor: "#bbbbbbbb",
+          padding: "0px",
         }}
         action={
           <div>
