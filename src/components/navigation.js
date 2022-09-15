@@ -47,7 +47,8 @@ export default function Navigation() {
       text: "Logout",
       onClick: () => {
         localStorage.removeItem("token");
-        navigate("/login");
+        navigate("/");
+        window.location.reload();
       },
     },
   ];
