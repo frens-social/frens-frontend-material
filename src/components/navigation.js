@@ -54,13 +54,18 @@ export default function Navigation() {
   ];
 
   return (
-    <Card style={{ width: 225, position: "sticky", top: 8 }}>
+    <Card style={{ width: 225, position: "sticky"}}>
       <CardHeaderUser user={user} menuButtons={menuButtons} />
 
-      <CardContent>
+      <CardContent
+        style={{
+          margin: 0,
+          padding: 0,
+        }}
+        >
         <ButtonGroup
           orientation="vertical"
-          variant="text"
+          variant="outlined"
           size="large"
           fullWidth={true}
         >
