@@ -16,14 +16,55 @@ import {
 export default function Auth() {
   const [tabValue, setTabValue] = React.useState(0);
 
+  const [loginUsername, setLoginUsername] = React.useState("");
+  const [loginPassword, setLoginPassword] = React.useState("");
+
+  const [registerEmail, setRegisterEmail] = React.useState("");
+  const [registerUsername, setRegisterUsername] = React.useState("");
+  const [registerPassword, setRegisterPassword] = React.useState("");
+
   const handleTabChange = (event, newValue) => {
     console.log("Tab changed to: ", newValue);
     setTabValue(newValue);
   };
 
+  function handleLogin() {
+    console.log("Login button clicked");
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+
+    var body = JSON.stringify({
+      username: loginUsername,
+      password: loginPassword,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: headers,
+      body: body,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:4000/api/v1/auth/login", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+          localStorage.setItem("token", result.token);
+          localStorage.setItem("username", result.username);
+          window.location.replace("http://localhost:3001/");
+      })
+      .catch((error) => console.log("error", error));
+  }
+
+  function handleRegister() {
+    console.log("Register button clicked");
+  }
+
   return (
     <div
-      classname="Auth"
+      className="Auth"
       style={{
         backgroundColor: "#23272A",
         height: "100vh",
@@ -50,7 +91,14 @@ export default function Auth() {
         }}
         sx={{ m: 1, gap: 24 }}
       >
-        <Card style={{ minWidth: 275, maxWidth: 400, minHeight: 400, maxHeight: 650 }}>
+        <Card
+          style={{
+            minWidth: 275,
+            maxWidth: 400,
+            minHeight: 400,
+            maxHeight: 650,
+          }}
+        >
           <CardHeader
             title={<Typography variant="h4">Frens.Moe</Typography>}
             subheader="A place for frens"
@@ -113,17 +161,26 @@ export default function Auth() {
                 sx={{ gap: 12 }}
               >
                 <TextField
-                  id="outlined-basic"
+                  id="login-username"
                   label="Username"
                   variant="outlined"
+                  value={loginUsername}
+                  onChange={(e) => setLoginUsername(e.target.value)}
                 />
                 <TextField
-                  id="outlined-basic"
+                  id="login-password"
                   label="Password"
                   variant="outlined"
                   type="password"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
                 />
-                <Button variant="contained" color="primary" size="large">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  onClick={handleLogin}
+                >
                   Login
                 </Button>
               </Box>
@@ -136,22 +193,33 @@ export default function Auth() {
                 sx={{ gap: 12 }}
               >
                 <TextField
-                    id="outlined-basic"
-                    label="Email"
-                    variant="outlined"
+                  id="register-email"
+                  label="Email"
+                  variant="outlined"
+                  value={registerEmail}
+                  onChange={(e) => setRegisterEmail(e.target.value)}
                 />
                 <TextField
-                  id="outlined-basic"
+                  id="register-password"
                   label="Username"
                   variant="outlined"
+                  value={registerUsername}
+                  onChange={(e) => setRegisterUsername(e.target.value)}
                 />
                 <TextField
-                  id="outlined-basic"
+                  id="register-password"
                   label="Password"
                   variant="outlined"
                   type="password"
+                  value={registerPassword}
+                  onChange={(e) => setRegisterPassword(e.target.value)}
                 />
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  onClick={handleRegister}
+                >
                   Sign Up
                 </Button>
               </Box>

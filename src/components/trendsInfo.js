@@ -1,4 +1,4 @@
-import { Card, CardHeader, Typography } from "@material-ui/core";
+import { Card, CardHeader } from "@material-ui/core";
 import React from "react";
 
 function TrendsInfo() {

@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div className="App">
       <div
-        classname="Background"
+        className="Background"
         style={{
           backgroundColor: "#23272A",
           height: "100vh",
