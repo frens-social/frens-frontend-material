@@ -9,6 +9,11 @@ import Navigation from "./components/navigation";
 import TrendsInfo from "./components/trendsInfo";
 import Search from "./components/search";
 import StatusCreatorFab from "./components/statusCreatorFab";
+import Auth from "./components/auth";
+
+function isLoggedIn() {
+  return localStorage.getItem("token") !== null;
+}
 
 export default function App() {
   return (
@@ -25,6 +30,7 @@ export default function App() {
           zIndex: -1,
         }}
       />
+      {isLoggedIn() ? (
       <Router>
         <Box
           display="flex"
@@ -44,6 +50,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/users/:userId" element={<Profile />} />
+              <Route path="*" element={<p>There's nothing here: 404!</p>} />
             </Routes>
           </Box>
 
@@ -51,6 +58,9 @@ export default function App() {
         </Box>
         <StatusCreatorFab />
       </Router>
+      ) : (
+        <Auth />
+      )}
     </div>
   );
 }
