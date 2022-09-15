@@ -9,14 +9,13 @@ import StatusFooterReactButton from "./statusFooterReactButton";
 
 export default function StatusFooter(props) {
   return (
-    <CardActions>
+    <CardActions style={{ padding: "0px" }}>
       <ButtonGroup
         orientation="horizontal"
         variant="text"
         size="small"
         fullWidth={true}
       >
-        <Button startIcon={<ReplyOutlinedIcon />} onClick={(event) => {}} />
         <Button
           startIcon={<FormatQuoteOutlinedIcon />}
           onClick={(event) => {}}
